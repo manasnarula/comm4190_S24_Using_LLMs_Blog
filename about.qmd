@@ -5,4 +5,4 @@ about:
   template: jolla
 ---
 
-About this blog
+My blogs for COMM, looking at various interactions with LLMs
