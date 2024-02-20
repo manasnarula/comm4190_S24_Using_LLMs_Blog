@@ -188,94 +188,94 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="how-will-chatgpt-act-as-a-financial-advisor.-lets-see-if-its-predictions-were-right." class="level2">
 <h2 class="anchored" data-anchor-id="how-will-chatgpt-act-as-a-financial-advisor.-lets-see-if-its-predictions-were-right.">How will ChatGPT act as a financial advisor. Let’s see if its predictions were right.</h2>
-<div id="6ab65d09-5004-44a7-afb7-03ee2eb4ae8f" class="cell" data-execution_count="16">
+<div id="6ab65d09-5004-44a7-afb7-03ee2eb4ae8f" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> openai <span class="im">import</span> OpenAI</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="b444aaab-0204-4290-99d9-bc3c9cc9f6fb" class="cell" data-execution_count="17">
+<div id="b444aaab-0204-4290-99d9-bc3c9cc9f6fb" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>apikey <span class="op">=</span> <span class="bu">open</span>(<span class="st">'../../../../00_Introduction_and_Setup/.apikey'</span>).read().strip()</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>os.environ[<span class="st">'OPENAI_API_KEY'</span>] <span class="op">=</span> apikey</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="12de02bc-e1af-4d9b-9759-be965de5ecfa" class="cell" data-execution_count="18">
+<div id="12de02bc-e1af-4d9b-9759-be965de5ecfa" class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>client <span class="op">=</span> OpenAI()</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>completion <span class="op">=</span> client.chat.completions.create(</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  model<span class="op">=</span><span class="st">"gpt-3.5-turbo"</span>,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  model<span class="op">=</span><span class="st">"gpt-3.5-turbo-0125"</span>,</span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  messages<span class="op">=</span>[</span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"role"</span>: <span class="st">"system"</span>, </span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>     <span class="st">"content"</span>: <span class="st">"You are a detailed and analytical hedge fund analyst. You would like to find some mid cap public stocks to recommend to your client."</span>},</span>
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"role"</span>: <span class="st">"user"</span>, </span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>     <span class="st">"content"</span>: <span class="st">"Give 10 mid cap stocks that are strong buys right now and provide strong financial reasoning as to why. Provide its current price and your anticipated price in 6 months."</span>}</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>     <span class="st">"content"</span>: <span class="st">"Look up and Give 10 mid cap stocks that are strong buys right now and provide strong financial reasoning as to why. Provide its current price and your anticipated price in 6 months."</span>}</span>
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  ]</span>
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> completion.choices[<span class="dv">0</span>].message.content</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="3286ce06-e43e-47df-a0a5-1ab7d146c570" class="cell" data-execution_count="19">
+<div id="3286ce06-e43e-47df-a0a5-1ab7d146c570" class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>As an analyst, I recommend the following 10 mid cap stocks that are currently strong buys based on their financial performance and growth prospects:
+<pre><code>As a responsible AI assistant, I must inform you that investing in stocks carries inherent risks and it's important to conduct thorough research or consult with a financial advisor before making any investment decisions. However, I can suggest 10 mid cap stocks that you may consider looking into based on their recent financial performance:
 
-1. Square, Inc. (SQ): 
-Current Price: $240
-Anticipated Price in 6 months: $300
-Reasoning: Square, Inc. is a leading fintech company that has shown strong revenue growth driven by its payment processing and digital services. With the increase in online payments and e-commerce, Square's revenues are expected to continue to grow, leading to potential upside in the stock price.
+1. **Square, Inc. (SQ)**
+   - Current Price: $240
+   - Anticipated Price in 6 months: $300
+   - Square has been experiencing strong revenue growth driven by its payment processing solutions and Cash App. The company's focus on expanding its ecosystem and international presence can lead to further revenue growth in the future.
 
-2. DocuSign Inc. (DOCU):
-Current Price: $290
-Anticipated Price in 6 months: $350
-Reasoning: DocuSign is a pioneer in e-signature technology, which has seen increased adoption due to remote work trends. The company has a solid recurring revenue model and strong growth potential in the digital document space.
+2. **DocuSign, Inc. (DOCU)**
+   - Current Price: $210
+   - Anticipated Price in 6 months: $260
+   - DocuSign is a leader in e-signature solutions, benefiting from the increasing trend towards digital transformation. The company's recurring revenue model and strong customer retention make it an attractive investment.
 
-3. Zscaler Inc. (ZS):
-Current Price: $250
-Anticipated Price in 6 months: $300
-Reasoning: Zscaler is a cybersecurity company that provides cloud-based security solutions. With the rising importance of data protection and the increasing number of cyber threats, Zscaler's services are in high demand, making it a strong buy.
+3. **Twilio Inc. (TWLO)**
+   - Current Price: $350
+   - Anticipated Price in 6 months: $420
+   - Twilio's cloud communications platform has seen increasing adoption, especially among developers building customer engagement applications. The company's strong revenue growth and expanding market opportunities make it a compelling investment.
 
-4. Twilio Inc. (TWLO):
-Current Price: $380
-Anticipated Price in 6 months: $450
-Reasoning: Twilio is a cloud communications platform that has shown robust revenue growth driven by the shift to digital communication channels. As businesses continue to invest in digital transformation, Twilio is well-positioned for growth.
+4. **CrowdStrike Holdings, Inc. (CRWD)**
+   - Current Price: $260
+   - Anticipated Price in 6 months: $320
+   - CrowdStrike is a leading cybersecurity company that has been benefiting from the increasing demand for cloud-based security solutions. The company's subscription-based revenue model and strong customer base position it well for future growth.
 
-5. Atlassian Corporation Plc (TEAM):
-Current Price: $250
-Anticipated Price in 6 months: $300
-Reasoning: Atlassian is a software company known for its collaboration and productivity tools. With the increasing trend towards remote work and digital collaboration, Atlassian's products are likely to see sustained demand, driving stock price appreciation.
+5. **Veeva Systems Inc. (VEEV)**
+   - Current Price: $330
+   - Anticipated Price in 6 months: $380
+   - Veeva provides cloud-based software solutions for the life sciences industry, experiencing robust demand for its products. The company's strong revenue growth and high customer retention rates make it a solid investment choice.
 
-6. Match Group, Inc. (MTCH):
-Current Price: $160
-Anticipated Price in 6 months: $200
-Reasoning: Match Group is a leading online dating company with a diverse portfolio of dating apps. As the online dating market continues to grow, Match Group is poised to benefit from increasing user engagement and potential monetization opportunities.
+6. **MercadoLibre, Inc. (MELI)**
+   - Current Price: $1700
+   - Anticipated Price in 6 months: $2000
+   - MercadoLibre is the leading e-commerce and fintech company in Latin America, benefiting from the region's growing online retail market. The company's diversified business model and expanding digital payments services offer significant growth potential.
 
-7. Cloudflare, Inc. (NET):
-Current Price: $100
-Anticipated Price in 6 months: $120
-Reasoning: Cloudflare is a cloud-based platform that provides cybersecurity and networking services. With the growing importance of online security and the shift to cloud computing, Cloudflare has strong growth potential in the cybersecurity space.
+7. **Okta, Inc. (OKTA)**
+   - Current Price: $260
+   - Anticipated Price in 6 months: $320
+   - Okta is a cloud identity management company experiencing strong demand for its solutions in the increasingly digitized world. The company's subscription-based revenue model and expanding customer base make it an attractive investment.
 
-8. Datadog Inc. (DDOG):
-Current Price: $115
-Anticipated Price in 6 months: $140
-Reasoning: Datadog is a cloud monitoring and analytics platform that helps businesses optimize their digital operations. With the increasing focus on data-driven decision-making, Datadog's services are expected to experience continued demand, driving stock price growth.
+8. **StoneCo Ltd. (STNE)**
+   - Current Price: $100
+   - Anticipated Price in 6 months: $130
+   - StoneCo is a leading financial technology company in Brazil, offering payment processing and digital finance solutions. The company's strong revenue growth and market share gains in the fintech industry make it a compelling investment opportunity.
 
-9. Elastic NV (ESTC):
-Current Price: $150
-Anticipated Price in 6 months: $180
-Reasoning: Elastic is a search and analytics company that provides data management solutions for businesses. With the rise in data complexity and the need for real-time analytics, Elastic is well-positioned to benefit from the growing demand for its services.
+9. **Trade Desk, Inc. (TTD)**
+   - Current Price: $800
+   - Anticipated Price in 6 months: $950
+   - Trade Desk operates a self-serve advertising platform that has been benefiting from the shift towards digital advertising. The company's innovative technology and strong revenue growth potential make it an attractive investment choice.
 
-10. Pinterest Inc. (PINS):
-Current Price: $70
-Anticipated Price in 6 months: $90
-Reasoning: Pinterest is a visual discovery platform that has seen strong user growth and engagement. With its advertising business gaining traction and the platform's popularity among users, Pinterest has the potential for stock price appreciation.
+10. **Cloudflare, Inc. (NET)**
+    - Current Price: $100
+    - Anticipated Price in 6 months: $130
+    - Cloudflare is a leading provider of cloud-based security and content delivery services, experiencing increasing demand for its solutions. The company's expanding product portfolio and strong competitive position make it a promising investment opportunity.
 
-These mid cap stocks are considered strong buys due to their solid financial performance, growth prospects, and positioning in their respective industries. As with any investment, it is important to conduct further research and consult with a financial advisor before making investment decisions.</code></pre>
+These stock suggestions are based on recent financial performance and market trends but remember that individual circumstances and market conditions can vary. It's always recommended to conduct thorough research and consider your risk tolerance before investing in any stock.</code></pre>
 </div>
 </div>
 </section>
-<section id="i-believe-chatgpts-knowledge-deadline-is-sep-2021.-lets-analyze-if-it-was-right." class="level2">
-<h2 class="anchored" data-anchor-id="i-believe-chatgpts-knowledge-deadline-is-sep-2021.-lets-analyze-if-it-was-right.">I believe ChatGPT’s knowledge deadline is Sep-2021. Let’s analyze if it was right.</h2>
-<p><img src="Docusign.png" class="img-fluid"> <img src="Zscaler.png" class="img-fluid"></p>
+<section id="i-believe-chatgpt-3.5s-knowledge-deadline-is-sep-2021.-lets-analyze-if-it-was-right." class="level2">
+<h2 class="anchored" data-anchor-id="i-believe-chatgpt-3.5s-knowledge-deadline-is-sep-2021.-lets-analyze-if-it-was-right.">I believe ChatGPT 3.5’s knowledge deadline is Sep-2021. Let’s analyze if it was right.</h2>
+<p><img src="Docusign.png" class="img-fluid"> <img src="Twilio.png" class="img-fluid"></p>
 </section>
-<section id="looks-like-it-was-wrong-about-both-while-zscaler-overall-did-not-move-too-much-seems-we-should-have-shorted-docusign" class="level2">
-<h2 class="anchored" data-anchor-id="looks-like-it-was-wrong-about-both-while-zscaler-overall-did-not-move-too-much-seems-we-should-have-shorted-docusign">Looks like it was wrong about both! While Zscaler overall did not move too much, seems we should have shorted DocuSign!</h2>
+<section id="looks-like-it-was-wrong-about-both-it-seems-like-we-should-have-shorted-both-of-these-companies-in-september-2021" class="level2">
+<h2 class="anchored" data-anchor-id="looks-like-it-was-wrong-about-both-it-seems-like-we-should-have-shorted-both-of-these-companies-in-september-2021">Looks like it was wrong about both! It seems like we should have shorted both of these companies in September 2021!</h2>
 <div id="ba74d0d9-d189-47d2-8c66-fc372df8ff38" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>client <span class="op">=</span> OpenAI()</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -354,7 +354,8 @@ Please note that the anticipated prices in 6 months are based on the assumptions
 </section>
 <section id="interesting-airbnb-and-uber.-lets-check-them-out-from-sep-2021." class="level2">
 <h2 class="anchored" data-anchor-id="interesting-airbnb-and-uber.-lets-check-them-out-from-sep-2021.">Interesting, AirBnb and Uber. Let’s check them out from Sep-2021.</h2>
-<p><img src="Airbnb.png" class="img-fluid"> <img src="Uber.png" class="img-fluid"></p>
+<p><img src="Airbnb.png" class="img-fluid"></p>
+<p><img src="Uber.png" class="img-fluid"></p>
 </section>
 <section id="looks-like-their-recommendation-to-short-airbnb-could-have-resulted-in-a-tiny-bit-of-profit-but-it-really-missed-the-mark-with-uber.-it-should-have-recommended-a-buy" class="level2">
 <h2 class="anchored" data-anchor-id="looks-like-their-recommendation-to-short-airbnb-could-have-resulted-in-a-tiny-bit-of-profit-but-it-really-missed-the-mark-with-uber.-it-should-have-recommended-a-buy">Looks like their recommendation to short Airbnb could have resulted in a tiny bit of profit, but it really missed the mark with Uber. It should have recommended a buy!</h2>
