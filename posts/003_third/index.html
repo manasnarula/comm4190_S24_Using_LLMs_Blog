@@ -8,9 +8,9 @@
 
 <meta name="author" content="Manas">
 <meta name="dcterms.date" content="2024-02-19">
-<meta name="description" content="Can the LLM act like a hedge fund?">
+<meta name="description" content="Testing AI’s Financial Acumen: 10 Buys and 10 Shorts">
 
-<title>My Explorations with LLMs lol - The third post</title>
+<title>My Explorations with LLMs lol - Can GPT-3.5 Run a Hedge Fund?</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,40 +22,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -140,16 +106,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">The third post</h1>
+      <h1 class="title">Can GPT-3.5 Run a Hedge Fund?</h1>
                   <div>
         <div class="description">
-          Can the LLM act like a hedge fund?
+          Testing AI’s Financial Acumen: 10 Buys and 10 Shorts
         </div>
       </div>
                           <div class="quarto-categories">
-                <div class="quarto-category">LLMs</div>
                 <div class="quarto-category">investing</div>
-                <div class="quarto-category">financial analysis</div>
+                <div class="quarto-category">financial analysiss</div>
               </div>
                   </div>
   </div>
@@ -186,113 +151,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="how-will-chatgpt-act-as-a-financial-advisor.-lets-see-if-its-predictions-were-right." class="level2">
-<h2 class="anchored" data-anchor-id="how-will-chatgpt-act-as-a-financial-advisor.-lets-see-if-its-predictions-were-right.">How will ChatGPT act as a financial advisor. Let’s see if its predictions were right.</h2>
-<div id="6ab65d09-5004-44a7-afb7-03ee2eb4ae8f" class="cell" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> openai <span class="im">import</span> OpenAI</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="b444aaab-0204-4290-99d9-bc3c9cc9f6fb" class="cell" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>apikey <span class="op">=</span> <span class="bu">open</span>(<span class="st">'../../../../00_Introduction_and_Setup/.apikey'</span>).read().strip()</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>os.environ[<span class="st">'OPENAI_API_KEY'</span>] <span class="op">=</span> apikey</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="12de02bc-e1af-4d9b-9759-be965de5ecfa" class="cell" data-execution_count="29">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>client <span class="op">=</span> OpenAI()</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>completion <span class="op">=</span> client.chat.completions.create(</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  model<span class="op">=</span><span class="st">"gpt-3.5-turbo-0125"</span>,</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  messages<span class="op">=</span>[</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"role"</span>: <span class="st">"system"</span>, </span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>     <span class="st">"content"</span>: <span class="st">"You are a detailed and analytical hedge fund analyst. You would like to find some mid cap public stocks to recommend to your client."</span>},</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"role"</span>: <span class="st">"user"</span>, </span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>     <span class="st">"content"</span>: <span class="st">"Look up and Give 10 mid cap stocks that are strong buys right now and provide strong financial reasoning as to why. Provide its current price and your anticipated price in 6 months."</span>}</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  ]</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> completion.choices[<span class="dv">0</span>].message.content</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="3286ce06-e43e-47df-a0a5-1ab7d146c570" class="cell" data-execution_count="30">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>As a responsible AI assistant, I must inform you that investing in stocks carries inherent risks and it's important to conduct thorough research or consult with a financial advisor before making any investment decisions. However, I can suggest 10 mid cap stocks that you may consider looking into based on their recent financial performance:
-
-1. **Square, Inc. (SQ)**
-   - Current Price: $240
-   - Anticipated Price in 6 months: $300
-   - Square has been experiencing strong revenue growth driven by its payment processing solutions and Cash App. The company's focus on expanding its ecosystem and international presence can lead to further revenue growth in the future.
-
-2. **DocuSign, Inc. (DOCU)**
-   - Current Price: $210
-   - Anticipated Price in 6 months: $260
-   - DocuSign is a leader in e-signature solutions, benefiting from the increasing trend towards digital transformation. The company's recurring revenue model and strong customer retention make it an attractive investment.
-
-3. **Twilio Inc. (TWLO)**
-   - Current Price: $350
-   - Anticipated Price in 6 months: $420
-   - Twilio's cloud communications platform has seen increasing adoption, especially among developers building customer engagement applications. The company's strong revenue growth and expanding market opportunities make it a compelling investment.
-
-4. **CrowdStrike Holdings, Inc. (CRWD)**
-   - Current Price: $260
-   - Anticipated Price in 6 months: $320
-   - CrowdStrike is a leading cybersecurity company that has been benefiting from the increasing demand for cloud-based security solutions. The company's subscription-based revenue model and strong customer base position it well for future growth.
-
-5. **Veeva Systems Inc. (VEEV)**
-   - Current Price: $330
-   - Anticipated Price in 6 months: $380
-   - Veeva provides cloud-based software solutions for the life sciences industry, experiencing robust demand for its products. The company's strong revenue growth and high customer retention rates make it a solid investment choice.
-
-6. **MercadoLibre, Inc. (MELI)**
-   - Current Price: $1700
-   - Anticipated Price in 6 months: $2000
-   - MercadoLibre is the leading e-commerce and fintech company in Latin America, benefiting from the region's growing online retail market. The company's diversified business model and expanding digital payments services offer significant growth potential.
-
-7. **Okta, Inc. (OKTA)**
-   - Current Price: $260
-   - Anticipated Price in 6 months: $320
-   - Okta is a cloud identity management company experiencing strong demand for its solutions in the increasingly digitized world. The company's subscription-based revenue model and expanding customer base make it an attractive investment.
-
-8. **StoneCo Ltd. (STNE)**
-   - Current Price: $100
-   - Anticipated Price in 6 months: $130
-   - StoneCo is a leading financial technology company in Brazil, offering payment processing and digital finance solutions. The company's strong revenue growth and market share gains in the fintech industry make it a compelling investment opportunity.
-
-9. **Trade Desk, Inc. (TTD)**
-   - Current Price: $800
-   - Anticipated Price in 6 months: $950
-   - Trade Desk operates a self-serve advertising platform that has been benefiting from the shift towards digital advertising. The company's innovative technology and strong revenue growth potential make it an attractive investment choice.
-
-10. **Cloudflare, Inc. (NET)**
-    - Current Price: $100
-    - Anticipated Price in 6 months: $130
-    - Cloudflare is a leading provider of cloud-based security and content delivery services, experiencing increasing demand for its solutions. The company's expanding product portfolio and strong competitive position make it a promising investment opportunity.
-
-These stock suggestions are based on recent financial performance and market trends but remember that individual circumstances and market conditions can vary. It's always recommended to conduct thorough research and consider your risk tolerance before investing in any stock.</code></pre>
-</div>
-</div>
-</section>
-<section id="i-believe-chatgpt-3.5s-knowledge-deadline-is-sep-2021.-lets-analyze-if-it-was-right." class="level2">
-<h2 class="anchored" data-anchor-id="i-believe-chatgpt-3.5s-knowledge-deadline-is-sep-2021.-lets-analyze-if-it-was-right.">I believe ChatGPT 3.5’s knowledge deadline is Sep-2021. Let’s analyze if it was right.</h2>
-<p><img src="Docusign.png" class="img-fluid"> <img src="Twilio.png" class="img-fluid"></p>
-</section>
-<section id="looks-like-it-was-wrong-about-both-it-seems-like-we-should-have-shorted-both-of-these-companies-in-september-2021" class="level2">
-<h2 class="anchored" data-anchor-id="looks-like-it-was-wrong-about-both-it-seems-like-we-should-have-shorted-both-of-these-companies-in-september-2021">Looks like it was wrong about both! It seems like we should have shorted both of these companies in September 2021!</h2>
-<div id="ba74d0d9-d189-47d2-8c66-fc372df8ff38" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>client <span class="op">=</span> OpenAI()</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>completion <span class="op">=</span> client.chat.completions.create(</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  model<span class="op">=</span><span class="st">"gpt-3.5-turbo"</span>,</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  messages<span class="op">=</span>[</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"role"</span>: <span class="st">"system"</span>, </span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>     <span class="st">"content"</span>: <span class="st">"You are a detailed and analytical hedge fund analyst. You would like to find some mid cap public stocks that you expect to drop in price to recommend to your client."</span>},</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"role"</span>: <span class="st">"user"</span>, </span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>     <span class="st">"content"</span>: <span class="st">"Give 10 mid cap public stocks that are strong shorts right now and provide strong financial reasoning as to why. Provide its current price and your anticipated price in 6 months."</span>}</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  ]</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> completion.choices[<span class="dv">0</span>].message.content</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="0d6ec095-5638-43d0-8b76-82910b73d63c" class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="how-will-chatgpt-act-as-a-financial-advisor.-its-data-is-from-sep-21-lets-see-if-its-predictions-were-right." class="level2">
+<h2 class="anchored" data-anchor-id="how-will-chatgpt-act-as-a-financial-advisor.-its-data-is-from-sep-21-lets-see-if-its-predictions-were-right.">How will ChatGPT act as a financial advisor. Its data is from Sep-21, let’s see if its predictions were right.</h2>
+<div id="3286ce06-e43e-47df-a0a5-1ab7d146c570" class="cell" data-execution_count="15">
 <div class="cell-output cell-output-stdout">
 <pre><code>As an AI language model, I must clarify that short selling involves significant risk and may not be suitable for all investors. It's essential for investors to conduct thorough research and carefully consider their risk tolerance before engaging in short selling.
 
@@ -351,14 +212,66 @@ Here are 10 mid cap public stocks that are potential candidates for short sellin
 Please note that the anticipated prices in 6 months are based on the assumptions and analysis available at the time of writing and may not accurately reflect the future stock performance. It is essential to conduct further due diligence and consult with a financial advisor before making any investment decisions.</code></pre>
 </div>
 </div>
-</section>
-<section id="interesting-airbnb-and-uber.-lets-check-them-out-from-sep-2021." class="level2">
-<h2 class="anchored" data-anchor-id="interesting-airbnb-and-uber.-lets-check-them-out-from-sep-2021.">Interesting, AirBnb and Uber. Let’s check them out from Sep-2021.</h2>
-<p><img src="Airbnb.png" class="img-fluid"></p>
-<p><img src="Uber.png" class="img-fluid"></p>
-</section>
-<section id="looks-like-their-recommendation-to-short-airbnb-could-have-resulted-in-a-tiny-bit-of-profit-but-it-really-missed-the-mark-with-uber.-it-should-have-recommended-a-buy" class="level2">
-<h2 class="anchored" data-anchor-id="looks-like-their-recommendation-to-short-airbnb-could-have-resulted-in-a-tiny-bit-of-profit-but-it-really-missed-the-mark-with-uber.-it-should-have-recommended-a-buy">Looks like their recommendation to short Airbnb could have resulted in a tiny bit of profit, but it really missed the mark with Uber. It should have recommended a buy!</h2>
+<p><img src="DocuSign.png" class="img-fluid"> <img src="Zscaler.png" class="img-fluid"></p>
+<div id="0d6ec095-5638-43d0-8b76-82910b73d63c" class="cell" data-execution_count="14">
+<div class="cell-output cell-output-stdout">
+<pre><code>As an AI language model, I must clarify that short selling involves significant risk and may not be suitable for all investors. It's essential for investors to conduct thorough research and carefully consider their risk tolerance before engaging in short selling.
+
+Here are 10 mid cap public stocks that are potential candidates for short selling, along with a brief rationale and anticipated price in 6 months based on current financial trends and market conditions:
+
+1. **Airbnb Inc. (ABNB)**
+   - Current Price: $160.00
+   - Rationale: Airbnb's business heavily relies on travel and tourism, both of which have been significantly impacted by the COVID-19 pandemic. As travel restrictions continue and economic uncertainty persists, Airbnb's revenue is likely to remain under pressure.
+   - Anticipated Price in 6 Months: $120.00
+
+2. **Uber Technologies Inc. (UBER)**
+   - Current Price: $44.50
+   - Rationale: With ongoing regulatory challenges, labor disputes, and increasing competition in the ride-sharing and food delivery markets, Uber faces operational and profitability concerns in the medium term.
+   - Anticipated Price in 6 Months: $35.00
+
+3. **American Airlines Group Inc. (AAL)**
+   - Current Price: $21.10
+   - Rationale: The airline industry continues to face uncertainty due to the pandemic-induced travel restrictions and reduced demand for air travel. American Airlines' high debt levels and operating expenses further weaken its financial outlook.
+   - Anticipated Price in 6 Months: $16.00
+
+4. **Carnival Corporation &amp; Plc (CCL)**
+   - Current Price: $22.75
+   - Rationale: Cruise operators like Carnival have experienced significant disruptions to their operations due to the pandemic. With ongoing concerns about virus outbreaks onboard and limited resumption of cruises, Carnival's revenue generation remains constrained.
+   - Anticipated Price in 6 Months: $18.00
+
+5. **Dropbox Inc. (DBX)**
+   - Current Price: $31.20
+   - Rationale: Dropbox faces intense competition in the cloud storage and collaboration space, which puts pressure on its pricing power and market share. Moreover, the shift towards remote work may lead to slower growth in paid user acquisition.
+   - Anticipated Price in 6 Months: $25.00
+
+6. **PagerDuty Inc. (PD)**
+   - Current Price: $40.75
+   - Rationale: PagerDuty operates in the highly competitive and rapidly evolving IT operations management sector. As businesses reassess their technology spending and investments, PagerDuty may face challenges in expanding its customer base.
+   - Anticipated Price in 6 Months: $30.00
+
+7. **Square Inc. (SQ)**
+   - Current Price: $250.60
+   - Rationale: Square's stock has rallied significantly, leading to a high valuation relative to its financial performance. As macroeconomic conditions change and competition intensifies in the digital payments industry, there may be downward pressure on Square's stock price.
+   - Anticipated Price in 6 Months: $200.00
+
+8. **Wendy's Company (WEN)**
+   - Current Price: $19.40
+   - Rationale: Wendy's faces challenges in its fast-food segment, with increased competition, changing consumer preferences, and cost pressures affecting its profitability. Slower sales recovery compared to peers may impact Wendy's stock performance.
+   - Anticipated Price in 6 Months: $15.00
+
+9. **Under Armour Inc. (UAA)**
+   - Current Price: $21.80
+   - Rationale: Under Armour's struggles with brand positioning, inventory management, and sluggish growth in its key markets have weighed on its financial performance. Regulatory scrutiny and changing consumer trends pose additional risks.
+   - Anticipated Price in 6 Months: $18.00
+
+10. **Nordstrom Inc. (JWN)**
+    - Current Price: $26.90
+    - Rationale: Nordstrom operates in the competitive retail sector, facing challenges from online competitors and shifting consumer preferences. The company's high debt levels and store closures may impact its ability to sustain profitability.
+    - Anticipated Price in 6 Months: $20.00
+
+Please note that the anticipated prices in 6 months are based on the assumptions and analysis available at the time of writing and may not accurately reflect the future stock performance. It is essential to conduct further due diligence and consult with a financial advisor before making any investment decisions.</code></pre>
+</div>
+</div>
 
 
 </section>
