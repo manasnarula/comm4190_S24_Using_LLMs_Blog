@@ -6,8 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Manas">
+<meta name="dcterms.date" content="2024-02-26">
+<meta name="description" content="AI Art Critique Experiment: Deep Analysis from Visuals Alone.">
 
-<title>My Explorations with LLMs lol</title>
+<title>My Explorations with LLMs lol - GPT as an Art Critic</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,40 +22,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -134,7 +103,44 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">GPT as an Art Critic</h1>
+                  <div>
+        <div class="description">
+          AI Art Critique Experiment: Deep Analysis from Visuals Alone.
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">Art Analysis</div>
+                <div class="quarto-category">Visual Studies</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Manas </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">February 26, 2024</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     
@@ -144,20 +150,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<div id="87481cd9-1163-48a7-a813-a9af9fd108be" class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">---</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>title: <span class="st">"GPT as an Art Critic"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>description: <span class="st">"AI Art Critique Experiment: Deep Analysis from Visuals Alone."</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>author: <span class="st">"Manas"</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>date: <span class="st">"2/26/2024"</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>execute:</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  echo: false</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>draft: true</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>categories:</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="op">-</span> Art Analysis</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="op">-</span> Visual Studies</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="op">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+
 <p>New experiment: testing an AI’s ability to describe and interpret a range of artwork, pushing it beyond simple recognition to uncover deeper narratives and emotions within each piece. For different types of art, I’m curious to see how the AI connects with human expressions captured in visuals. Join as I will explore what GPT-4 can really tell us about the art pieces it ‘views’.</p>
 <section id="step-1-selection-of-artworks" class="level2">
 <h2 class="anchored" data-anchor-id="step-1-selection-of-artworks">Step 1: Selection of Artworks</h2>
@@ -172,19 +165,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="starry-night" class="level2">
 <h2 class="anchored" data-anchor-id="starry-night">Starry Night</h2>
 <p><img src="star.png" class="img-fluid"></p>
-<div id="e4d9f636-6a25-41fe-b8c4-860e38e0ed29" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> openai <span class="im">import</span> OpenAI</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> base64</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="53e4fa2b-bcc5-498d-a6e2-c02113d405f0" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>apikey <span class="op">=</span> <span class="bu">open</span>(<span class="st">'../../../../00_Introduction_and_Setup/.apikey'</span>).read().strip()</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>os.environ[<span class="st">'OPENAI_API_KEY'</span>] <span class="op">=</span> apikey</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="9a13395c-f64e-4c7f-bd48-03eecf817d14" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>client <span class="op">=</span> OpenAI()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 <p><strong>GPT’s Description</strong>: This image displays a painting featuring a vibrant night sky filled with swirling clouds, bright stars, and a glowing crescent moon. In the foreground, there is a tall, dark cypress tree that stands out against the sky, drawing the viewer’s eye upward. Below, a quaint village rests under the celestial dance, with peaceful houses, rolling hills, and a church spire that echoes the verticality of the cypress tree. The brushwork is expressive and dynamic, with thick impasto, which adds texture and a sense of movement. The color palette is dominated by shades of blue and yellow, creating a stark contrast between the cool night and the warm, lively stars. The artist seems to convey a mix of emotions and themes through this piece. The tumultuous sky could suggest a feeling of unrest or turmoil, while the stars and moon provide a sense of light and hope amidst the darkness. There is a dreamlike quality to the scene, evoking wonder and awe at the vastness and beauty of the night sky. The painting could also reflect on the eternal nature of the cosmos in contrast with the serene and unchanged village, a juxtaposition of the infinite and the temporal. This artwork is often seen as a symbol of the artist’s internal feelings and struggles, as well as a testament to the power of nature and the universe.</p>
 <p><em>Without technically knowing which painting I was showing it, the GPT nails the essence of “Starry Night,” emphasizing its swirling skies and vibrant contrasts, and overall seeming to capture van Gogh’s emotional depth. It suggests the painting as a dance between turmoil and tranquility, which is true and ties van Gogh’s personal struggles to the allure of the night sky.</em></p>
 <p>Now, I am going to put its description through an AI Art Professor. Here’s my prompt:</p>
