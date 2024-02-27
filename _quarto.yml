@@ -2,20 +2,14 @@ project:
   type: website
 
 website:
-  title: "My Explorations with LLMs"
+  title: "Knowledge Legos"
   navbar:
     right:
       - about.qmd
-      - icon: github
-        href: https://github.com/
-      - icon: twitter
-        href: https://twitter.com
 format:
   html:
-    theme: cosmo
+    theme: solar
     css: styles.css
 
 execute:
   freeze: auto
-
-
