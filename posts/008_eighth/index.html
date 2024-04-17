@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.553">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Manas">
+<meta name="dcterms.date" content="2024-04-10">
+<meta name="description" content="Asking LLMs to describe, rank, rate music and iterating along the way to see what changes.">
+
+<title>Knowledge Legos - Do LLM’s have any Bias to Music?</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Knowledge Legos</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Do LLM’s have any Bias to Music?</h1>
+                  <div>
+        <div class="description">
+          Asking LLMs to describe, rank, rate music and iterating along the way to see what changes.
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">Bias</div>
+                <div class="quarto-category">Music</div>
+                <div class="quarto-category">Rating Systems</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Manas </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">April 10, 2024</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<p>I first wanted to make this as diverse an assortment of songs as possible, so I asked GPT-4 to give me a list.</p>
+<p><strong>Me:</strong> Give me five songs that are completely different from each other</p>
+<p><strong>GPT:</strong> Here are five songs that are distinct in style, genre, and mood, each representing a unique musical experience:</p>
+<p>“Bohemian Rhapsody” by Queen - This song is a blend of rock, ballad, and opera, making it a standout example of musical eclecticism. It switches from a slow piano intro to a mock opera and then into hard rock, all within six minutes.</p>
+<p>“Summertime” by Ella Fitzgerald and Louis Armstrong - A classic jazz number characterized by its smooth, melodic lines and the distinctive voices of Fitzgerald and Armstrong. This song is often associated with a laid-back, sultry summer atmosphere.</p>
+<p>“Hotline Bling” by Drake - A contemporary R&amp;B song with a catchy melody and danceable beats. The song is known for its minimalist production and became famous for its music video featuring Drake’s dance moves.</p>
+<p>“Smells Like Teen Spirit” by Nirvana - A grunge rock anthem that captured the spirit of the early ’90s youth and rebellion. Its raw guitar riffs and energetic drums are instantly recognizable.</p>
+<p>“Adagio for Strings” by Samuel Barber - A classical piece composed for string orchestra. This somber, slow-paced composition is profoundly emotional and has been used in numerous movies and ceremonies due to its deep, reflective quality.</p>
+<p>Each of these songs not only represents a different genre but also invokes a unique set of emotions and has made its own impact on music history.</p>
+<p><em>Separate Thread</em></p>
+<p><strong>Me:</strong> I want you to analyze and rate different music. I want you to break down each song that I give you into detailed analysis about the various parts and aspects of the song and how it conforms to your definition of good music. Finally, give it a specific grade on a scale to 10</p>
+<p>…</p>
+<p><strong>Me:</strong> I want you to give me your definition of good music that you will adhere to and be extremely critical and specific when you do the analysis</p>
+<p><strong>GPT:</strong> Certainly! My approach to analyzing music critically and specifically will consider several key aspects:</p>
+<p>Composition and Structure: Good music often exhibits a well-crafted structure that includes an introduction, verses, choruses, and perhaps a bridge or instrumental solo. Effective transitions between these sections and a satisfying resolution or outro also contribute to a song’s quality. Lyrics: In songs where lyrics are present, they should be meaningful, cohesive, and well-matched with the music. Good lyrics typically evoke emotions or tell a story, and they should do so with a degree of originality and poetic craft. Harmony and Melody: The harmonic foundation should support the melody and enhance the overall mood and emotional impact of the song. A good melody is memorable, suits the lyrical content, and is dynamically interesting. Harmony that is both appropriate to the style and creatively used can elevate a piece. Rhythm and Tempo: The rhythmic structure should suit the style and mood of the music. Good music often features a well-defined rhythm that complements the melody and harmony, and uses tempo changes effectively to highlight different sections of the song. Instrumentation and Arrangement: Effective use of instruments and their arrangement can greatly enhance the listener’s experience. This includes how well the instruments blend together, the quality of sound production, and how they contribute to the overall texture of the song. Production Quality: This involves the technical aspects of recording, mixing, and mastering. A well-produced song should have clear and balanced audio quality, where no element overshadows another unless intentionally done for artistic effect. Innovation and Creativity: Good music often introduces new ideas or reinterprets existing ones in an original way. This can involve inventive use of scales, chords, rhythms, or production techniques that challenge the norm and push the genre forward. Emotional Impact and Engagement: Ultimately, good music resonates on an emotional level. It should be able to engage listeners, evoke responses, and leave a lasting impression. Cohesion: All elements of the song should work together cohesively. Even if a song is ambitious or complex, its parts should unify into a coherent whole.</p>
+<p>Using these criteria, I’ll grade each song on a scale of 1 to 10, with 10 being a masterpiece in all respects and 1 indicating that the song has significant areas for improvement. If you have any additional criteria or specific focus areas, let me know! Now, which song would you like to start with?</p>
+<section id="bohemian-rhapsody" class="level2">
+<h2 class="anchored" data-anchor-id="bohemian-rhapsody">Bohemian Rhapsody</h2>
+<p><em>It just listed off why Bohemian Rhapsody is a masterpiece and gave it a 10/10. Which is valid, but I am trying to see how it ranks these songs in comparison to one another. Because all off them were extremely famous, number 1 songs at one point. So I said that no perfect scores were allowed and re-asked.</em></p>
+<p><strong>GPT:</strong> Understood! If we adhere strictly to a policy where perfect scores are not given to allow for the possibility of improvement and critique, here’s a revised grading:</p>
+<p>Revised Grade: 9.5/10 Reasons for not scoring a perfect 10:</p>
+<p>Lyrics Ambiguity: While the enigmatic nature of the lyrics is part of the song’s charm, it could also be viewed as a lack of clarity in storytelling. This ambiguity might leave some listeners puzzled about the song’s meaning and intent. Cohesion Challenge: Given its varied sections and dramatic shifts in style and tone, some listeners might find “Bohemian Rhapsody” less cohesive compared to more traditionally structured songs. This could affect its accessibility and immediate appeal to a broader audience.</p>
+<p>These points consider that while “Bohemian Rhapsody” is innovative and emotionally impactful, there is room for subjective critique regarding its lyrical clarity and structural cohesion. This adjustment in grading reflects a more critical stance, acknowledging its minor potential areas for improvement.</p>
+<p><em>I really like how it responded because it actually gave the “areas for improvement. I am curious to see what these will be for the other songs. If they’re more critical, nicer, etc.</em></p>
+</section>
+<section id="summertime" class="level2">
+<h2 class="anchored" data-anchor-id="summertime">Summertime</h2>
+<p><strong>GPT:</strong> “Summertime” performed by Ella Fitzgerald and Louis Armstrong is a classic rendition of a song originally composed by George Gershwin for the opera “Porgy and Bess.” This version is renowned for its soulful depth and jazz interpretation. Here’s a breakdown based on the outlined criteria:</p>
+<ol type="1">
+<li><p>Composition and Structure The song features a simple, yet effective A-B-A structure, which suits the lulling, lyrical content of the song. The repeated lines and musical phrases help evoke the song’s tranquil, summery feel.</p></li>
+<li><p>Lyrics “Summertime” has poignant, evocative lyrics that paint a vivid picture of ease and abundance. The words are deeply resonant, conveying warmth and the promise of life’s simplicity and potential.</p></li>
+<li><p>Harmony and Melody The melody is hauntingly beautiful, flowing smoothly atop a harmonious backdrop that mixes minor and major tones to create a feeling of both comfort and melancholy. Fitzgerald’s and Armstrong’s vocal lines interweave elegantly with the underlying chords.</p></li>
+<li><p>Rhythm and Tempo The tempo is slow and steady, reflecting the languid heat of summer and enhancing the song’s dreamlike quality. The rhythm section provides a gentle, swaying base that complements the vocal performances perfectly.</p></li>
+<li><p>Instrumentation and Arrangement Instrumentation in this version is rich but understated, featuring subtle brass, a gentle piano, and minimalistic but effective drumming. Fitzgerald’s and Armstrong’s voices are the central instruments, with each bringing a unique texture that adds depth to the arrangement.</p></li>
+<li><p>Production Quality The production on this track is excellent, capturing the intimate chemistry between Fitzgerald and Armstrong while maintaining clarity between the vocal and instrumental components. The balance allows each element to shine without overpowering the others.</p></li>
+<li><p>Innovation and Creativity While “Summertime” itself is a standard, this interpretation by Fitzgerald and Armstrong is creative in its vocal delivery and subtle jazz influences. They transform the song with their unique styles, making it distinctly their own.</p></li>
+<li><p>Emotional Impact and Engagement The emotional delivery is powerful; Fitzgerald’s smooth, comforting voice paired with Armstrong’s raspy, emotive depth creates a rich, emotional experience that deeply engages the listener.</p></li>
+<li><p>Cohesion All elements of this rendition work cohesively to support the song’s soothing, soulful theme. The artists’ interpretations and the arrangement choices all serve the emotional and thematic intent of the song.</p></li>
+</ol>
+<p>Grade: 9/10 Reasons for not scoring a perfect 10:</p>
+<p>Standardization: While beautifully performed, the song adheres closely to the traditional jazz form without significant deviation or innovation in the musical structure itself. For some, this might translate to a lack of bold creative risks. Stylistic Specificity: The jazz style is exquisitely executed but might not appeal universally. Its traditional sound and pacing may not resonate with those seeking more contemporary or varied interpretations.</p>
+<p>This rendition of “Summertime” is certainly a masterpiece of jazz vocal performance, but these critiques acknowledge the potential limitations in appeal and innovation. If you have more songs in mind or other insights you’d like to explore, feel free to share!</p>
+</section>
+<section id="hotline-bling" class="level2">
+<h2 class="anchored" data-anchor-id="hotline-bling">Hotline Bling</h2>
+<p><em>Now, this is kind of what made me think of this idea. I had a bit of a feeling that 21st century pop, and even more clearly hip-hop, would get more criticism in this kind of exercise. Let’s see what it says:</em></p>
+<p><strong>GPT:</strong> “Hotline Bling” by Drake is a modern pop track known for its catchy hooks and distinctive, minimalistic production. It marks a departure from Drake’s typical rap style, focusing more on melody and rhythm. Here’s the detailed analysis based on the criteria:</p>
+<ol type="1">
+<li><p>Composition and Structure “Hotline Bling” features a relatively simple structure, common in pop music, consisting of verses and a chorus that repeats frequently. The song lacks a bridge or significant variation in its sections, which emphasizes its hook and lyrical theme.</p></li>
+<li><p>Lyrics The lyrics of “Hotline Bling” reflect themes of lost love and nostalgia, focusing on the changes in behavior of a former lover who now calls him only when she needs something. The lyrics are straightforward and repetitive, which enhances the song’s catchiness but might lack depth or complexity.</p></li>
+<li><p>Harmony and Melody The melody is catchy and simple, designed to be easily memorable. The harmonic structure is minimalistic, with a looping chord progression that underpins the entire song, creating a moody, introspective vibe.</p></li>
+<li><p>Rhythm and Tempo The rhythm is one of the song’s standout features, incorporating a slow, steady beat with dancehall influences that make it inherently groovy and easy to dance to. The tempo is moderate, aligning well with the song’s relaxed, reflective mood.</p></li>
+<li><p>Instrumentation and Arrangement Instrumentation in “Hotline Bling” is sparse, featuring a prominent bass line, synthetic drums, and ambient, airy synths. This minimalistic approach puts a spotlight on the vocals and the rhythmic aspect, fitting the song’s emotional and stylistic tone.</p></li>
+<li><p>Production Quality The production, handled by Nineteen85, is polished and clean, with a focus on creating a spacious soundstage that allows Drake’s vocal performance to take center stage. The subtle use of reverb and the crispness of the beats highlight the production quality.</p></li>
+<li><p>Innovation and Creativity The song’s creativity lies in its blending of pop and dancehall elements with a minimalistic approach, which was somewhat innovative at the time of its release. It helped set a trend for simpler, more rhythm-focused tracks in mainstream music.</p></li>
+<li><p>Emotional Impact and Engagement “Hotline Bling” has a high level of emotional engagement, primarily due to its relatable lyrics and the catchiness of its melody. It taps into feelings of longing and personal reflection, which resonate with many listeners.</p></li>
+<li><p>Cohesion The song is highly cohesive, with every element from the lyrics to the production working together to enhance its thematic content of communication breakdown in modern relationships.</p></li>
+</ol>
+<p>Grade: 8/10 Reasons for not scoring a perfect 10:</p>
+<p>Lyrical Depth: While the lyrics are effective and relatable, they do not offer much depth or complexity, which could be seen as a missed opportunity to explore the song’s themes more profoundly. Structural Innovation: The song’s structure is very repetitive, which, while catchy, does not provide much in the way of variation or musical development over its duration.</p>
+<p>“Hotline Bling” effectively uses its minimalist style and infectious rhythm to create a memorable track, though it might benefit from more lyrical or structural complexity. If you have another song in mind or more aspects to explore, I’m here to help!</p>
+<p><strong><em>Seems like my predicition was pretty true. Even though Hotline Bling was outrageously popular about a decade ago, it doesn’t fit the description of “music” as GPT has learned it.</em></strong></p>
+</section>
+<section id="smells-like-teen-spirit" class="level2">
+<h2 class="anchored" data-anchor-id="smells-like-teen-spirit">Smells Like Teen Spirit</h2>
+<p><em>I think that this might be fairly similar to Bohemian Rhapsody, but maybe a little bit lower of a rating solely because it is not as universally recognized.</em></p>
+<p><strong>GPT:</strong> “Smells Like Teen Spirit” by Nirvana is a pivotal track in rock music, often credited with bringing grunge to a mainstream audience. Its raw energy and anti-establishment vibe encapsulate the spirit of the early 90s youth culture. Here’s the detailed analysis:</p>
+<ol type="1">
+<li><p>Composition and Structure The song has a classic grunge structure with a quiet verse and loud chorus, a technique that amplifies its emotional impact. The composition includes verses, choruses, and a bridge/solo section, which follows a typical rock song format but is executed with a distinctive intensity and rawness.</p></li>
+<li><p>Lyrics Kurt Cobain’s lyrics in “Smells Like Teen Spirit” are famously cryptic and disjointed, with phrases that evoke a rebellious, disillusioned youth culture. The chorus, “Here we are now, entertain us,” serves as both an anthem and a critique of the generation’s apathy and sense of entitlement. The ambiguity and irony in the lyrics have invited countless interpretations.</p></li>
+<li><p>Harmony and Melody The melody is relatively simple but highly effective, characterized by its iconic four-chord riff that combines both power and catchiness. The harmonic progression is straightforward yet potent, supporting the song’s grunge aesthetic with a sense of driving urgency.</p></li>
+<li><p>Rhythm and Tempo The rhythm is aggressive and propulsive, with Dave Grohl’s drumming providing a solid, energetic foundation. The tempo contributes to the song’s intense energy, driving the chaotic yet controlled nature of its delivery.</p></li>
+<li><p>Instrumentation and Arrangement Instrumentation in “Smells Like Teen Spirit” is typical for a rock band—guitar, bass, drums, and vocals—all of which are played with a high level of intensity. Cobain’s guitar is heavily distorted, creating a thick, immersive sound that became a hallmark of grunge music.</p></li>
+<li><p>Production Quality Produced by Butch Vig, the song features a polished yet raw sound that helped define the sonic qualities of grunge. The production balances clarity with a rough edge, capturing the band’s aggressive energy while making the track accessible to a wider audience.</p></li>
+<li><p>Innovation and Creativity The song’s approach to songwriting and production marked a departure from the more polished pop and metal that dominated the airwaves prior, making it innovative in its intent to capture a more authentic, unvarnished sound.</p></li>
+<li><p>Emotional Impact and Engagement “Smells Like Teen Spirit” excels in creating a visceral, compelling emotional experience. Its impact is immediate and intense, capturing the angst and alienation of its era and resonating with a wide range of listeners.</p></li>
+<li><p>Cohesion Despite its raw edge, the song is highly cohesive, with each element from the lyrics to the instruments aligning to produce a unified theme of youthful rebellion and disillusionment.</p></li>
+</ol>
+<p>Grade: 9/10 Reasons for not scoring a perfect 10:</p>
+<p>Lyrical Accessibility: The cryptic nature of the lyrics, while intriguing, can also alienate some listeners who prefer more straightforward or narrative-driven songwriting. Melodic Complexity: The melody, while iconic, is relatively simple and does not vary significantly throughout the song, which could be seen as a lack of melodic depth or complexity.</p>
+<p>“Smells Like Teen Spirit” captures the essence of a cultural movement with its raw power and emotional depth, though its stylistic choices may not cater to all tastes. If you’d like to discuss another song or delve deeper into any aspect of this track, just let me know!</p>
+<p><strong><em>Honestly, even though it did not get as good of a grade as Bohemian Rhapsody, it seems like its reasons for not giving 10 are literally describing subjectivity in music, while the other songs’ criticism felt a bit more concrete.</em></strong></p>
+</section>
+<section id="adagio-for-strings" class="level2">
+<h2 class="anchored" data-anchor-id="adagio-for-strings">Adagio for Strings</h2>
+<p><em>I am super curious how it will go about analyzing an orchestra piece. I would think it might be the highest, but let’s see:</em></p>
+<p><strong>GPT:</strong> “Adagio for Strings” by Samuel Barber is a powerful and poignant work, often described as one of the most emotional pieces of American classical music. Originally composed as the second movement of his String Quartet, Op. 11, Barber arranged it for string orchestra and it premiered in this form in 1938. Here is a detailed analysis based on the established criteria:</p>
+<ol type="1">
+<li><p>Composition and Structure “Adagio for Strings” is structured as a single-movement piece in the form of an adagio, which allows for sustained and expressive melodies. Its structure is simple and arch-like, with a gradual build-up to a climax followed by a resolution that mirrors the opening in a reflective and subdued manner.</p></li>
+<li><p>Lyrics As an instrumental piece, “Adagio for Strings” does not contain lyrics but conveys deep emotion through its musical phrasing and dynamic contrasts. The lack of lyrics means that the emotional and narrative content is entirely dependent on the music’s expressive power.</p></li>
+<li><p>Harmony and Melody The harmony is rich and moving, with a melody that is both haunting and beautiful. It progresses through a series of climbing phrases that increase in intensity, leading to a powerful and heart-wrenching climax before settling into a serene and mournful resolution.</p></li>
+<li><p>Rhythm and Tempo The tempo is slow and deliberate, enhancing the piece’s mournful and contemplative nature. The rhythm is subtle, with the flow largely driven by the melodic line and harmonic changes rather than by any pronounced rhythmic pattern.</p></li>
+<li><p>Instrumentation and Arrangement Barber’s arrangement for string orchestra maximizes the emotional impact of the piece. The strings play with a depth of tone and dynamic range that captures the nuances of grief and resignation, making effective use of the textural possibilities of a string ensemble.</p></li>
+<li><p>Production Quality In orchestral performances, the production quality hinges on the conductor’s interpretation and the orchestra’s execution. Recordings generally capture the lush soundscapes and the dynamic nuances that Barber intended, essential for conveying the piece’s emotional depth.</p></li>
+<li><p>Innovation and Creativity While the musical language of “Adagio for Strings” is not avant-garde, its emotional depth and the effectiveness with which it uses a simple, arching structure for profound emotional expression were innovative in terms of its emotional impact in the classical music repertoire.</p></li>
+<li><p>Emotional Impact and Engagement This piece is immensely powerful emotionally, often used in solemn occasions and memorials. Its capacity to evoke deep emotional responses is unmatched, making it one of the most evocative compositions in classical music.</p></li>
+<li><p>Cohesion The piece is highly cohesive, with every element—melody, harmony, tempo—working together to build the emotional narrative. The simplicity of its structure enhances this cohesion, with no element feeling out of place or unnecessary.</p></li>
+</ol>
+<p>Grade: 9/10 Reasons for not scoring a perfect 10:</p>
+<p>Complexity and Accessibility: “Adagio for Strings” is emotionally complex but structurally simple. Some listeners or critics might desire greater complexity or variation within its musical development. Innovative Techniques: While emotionally striking, the piece does not employ particularly innovative musical techniques or structures. It works within a relatively traditional framework of Western classical music, which could be seen as a limitation in terms of groundbreaking creativity.</p>
+<p>“Adagio for Strings” by Samuel Barber is a masterpiece of emotional expression through music, capturing a universal sense of mourning and beauty. If you’d like to continue with more pieces or revisit any aspect of this analysis, feel free to let me know!</p>
+<p><strong><em>Although it got the same score as a Jazz and Rock song, it seemed like its criticism is harsher than the others. Just for further experimentation, I wanted to see how it handled a hip hop, trap song. So I asked GPT for one and it gave me “Sicko Mode” By Travis Scott and Drake. Honestly, I think it might give a review on par with the others and better than Hotline Bling.</em></strong></p>
+</section>
+<section id="sicko-mode" class="level2">
+<h2 class="anchored" data-anchor-id="sicko-mode">Sicko Mode</h2>
+<p><strong>GPT:</strong> “Sicko Mode” by Travis Scott is a standout track from his album “Astroworld,” featuring a unique structure and a collaboration with Drake. The song became widely recognized for its non-traditional format, inventive production, and the fusion of different musical ideas within a single track. Here’s a critical analysis:</p>
+<ol type="1">
+<li><p>Composition and Structure “Sicko Mode” is notable for its complex structure, which includes multiple beat changes and distinct sections that could almost stand as separate tracks. This episodic structure is innovative but can also be seen as disjointed, as the transitions are abrupt and the sections have starkly different vibes.</p></li>
+<li><p>Lyrics The lyrics in “Sicko Mode” are dynamic and include a variety of themes, from success and lifestyle to personal experiences. However, the lyrical content sometimes lacks depth and coherence, jumping quickly between topics without fully exploring any. The fragmented nature of the song mirrors its structural complexity but at the expense of narrative clarity.</p></li>
+<li><p>Harmony and Melody The track features a variety of melodic and harmonic elements, shifting significantly with each section. These changes keep the listener engaged but might also hinder the song’s musical cohesion. The melodies are catchy yet not particularly complex, relying heavily on the production and rhythmic drive.</p></li>
+<li><p>Rhythm and Tempo Rhythmically, “Sicko Mode” is diverse, incorporating different beats that correspond to the multiple phases of the track. These shifts help create a dynamic listening experience but might feel overwhelming or erratic to some listeners due to their unpredictability.</p></li>
+<li><p>Instrumentation and Arrangement The instrumentation is rich and layered, showcasing a broad range of samples and synthesized sounds. While this creates a textured auditory palette, it sometimes borders on being overproduced, with so many elements vying for attention that it can detract from the overall musicality.</p></li>
+<li><p>Production Quality The production, managed by multiple producers including Hit-Boy, Tay Keith, and CuBeatz, among others, is high-quality and polished, typical of Travis Scott’s work. It’s innovative and cutting-edge, though at times it might feel like the production overshadows the songwriting and lyrical content.</p></li>
+<li><p>Innovation and Creativity “Sicko Mode” is highly innovative, particularly in its approach to song structure and use of technology in music production. However, its experimental nature might not resonate with all audiences, as the frequent shifts can disrupt the flow and make it hard to follow.</p></li>
+<li><p>Emotional Impact and Engagement The song is energetic and impactful, capable of capturing the listener’s attention immediately. Its energy is its strongest emotional appeal, though the lack of a consistent theme or message might limit its emotional depth for some.</p></li>
+<li><p>Cohesion Cohesion is perhaps the most critical area for “Sicko Mode.” The track feels like a collage of different ideas that, while exciting, sometimes lacks a unifying thread. Each section, while impressive on its own, competes rather than complements, reducing the overall unity of the track.</p></li>
+</ol>
+<p>Grade: 8/10 Reasons for not scoring a perfect 10:</p>
+<p>Cohesion and Flow: The song’s innovative structure leads to a lack of cohesion, making it feel more like a medley of different tracks than a single, unified piece. Lyrical Depth and Clarity: The lyrics, while energetic and reflective of Travis Scott’s style, lack depth and coherence, which could be improved to add more substance to the dynamic production.</p>
+<p>“Sicko Mode” by Travis Scott is a bold exploration of what modern hip-hop can be, pushing boundaries with its production and structure. Its strengths lie in its creativity and energy, though it could benefit from greater coherence and depth in its lyrical narrative. If there’s another song or another aspect of “Sicko Mode” you’d like to explore further, let me know!</p>
+<p><strong><em>Pretty interesting, I was fairly off with my prediction. Out of all the songs, it definitely seems to criticize Sicko Mode the most: “medley of different tracks” “dives into different topics without fully exploring any.</em></strong></p>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p><strong>GPT:</strong> Throughout this analysis of a diverse range of songs, we’ve explored various musical genres and styles, assessing each based on composition, lyrics, harmony, rhythm, instrumentation, production quality, innovation, emotional impact, and cohesion. Here’s a summary of the analyses with a final ranking based on the grades provided, accompanied by a suggestion for improvement for each song:</p>
+<p>“Adagio for Strings” by Samuel Barber - 9/10 Improvement: Could benefit from adding slight variations in the musical development to enhance complexity without sacrificing emotional depth.</p>
+<p>“Bohemian Rhapsody” by Queen - 9.5/10 Improvement: Could improve by clarifying the lyrical ambiguity to enhance narrative coherence and broaden its appeal.</p>
+<p>“Smells Like Teen Spirit” by Nirvana - 9/10 Improvement: Might incorporate more melodic complexity to enrich the musical experience without losing its raw energy.</p>
+<p>“Summertime” by Ella Fitzgerald and Louis Armstrong - 9/10 Improvement: Could explore more adventurous arrangements to add freshness to this classic standard while maintaining its soulful essence.</p>
+<p>“Sicko Mode” by Travis Scott - 8/10 Improvement: Would benefit from a more cohesive structure to unify its diverse sections and enhance lyrical depth.</p>
+<p>“Hotline Bling” by Drake - 8/10 Improvement: Enhancing lyrical depth and introducing more structural variations could provide a richer listening experience.</p>
+<p>These rankings and critiques recognize each piece’s unique contributions to music while noting potential areas for enhancement to reach even broader or more profound impacts. This exercise underscores the complexity of musical analysis and the subjective nature of what makes music resonate with its audience, each piece holding its unique place in the musical landscape…</p>
+<p><img src="music.jpeg" class="img-fluid"></p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/manasnarula\.github\.io\/comm4190_S24_Using_LLMs_Blog\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

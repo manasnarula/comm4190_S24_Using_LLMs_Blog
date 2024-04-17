@@ -1,39 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://manasnarula.github.io/comm4190_S24_Using_LLMs_Blog/about.html</loc>
-    <lastmod>2024-04-04T17:22:28.406Z</lastmod>
-  </url>
-  <url>
-    <loc>https://manasnarula.github.io/comm4190_S24_Using_LLMs_Blog/posts/006_sixth/index.html</loc>
-    <lastmod>2024-04-04T17:22:28.442Z</lastmod>
-  </url>
-  <url>
-    <loc>https://manasnarula.github.io/comm4190_S24_Using_LLMs_Blog/posts/003_third/indexs.html</loc>
-    <lastmod>2024-04-04T17:22:28.418Z</lastmod>
-  </url>
-  <url>
-    <loc>https://manasnarula.github.io/comm4190_S24_Using_LLMs_Blog/posts/004_fourth/index.html</loc>
-    <lastmod>2024-04-04T17:22:28.418Z</lastmod>
+    <loc>https://manasnarula.github.io/comm4190_S24_Using_LLMs_Blog/index.html</loc>
+    <lastmod>2024-04-17T19:31:44.116Z</lastmod>
   </url>
   <url>
     <loc>https://manasnarula.github.io/comm4190_S24_Using_LLMs_Blog/posts/005_fifth/index.html</loc>
-    <lastmod>2024-04-04T17:22:28.442Z</lastmod>
-  </url>
-  <url>
-    <loc>https://manasnarula.github.io/comm4190_S24_Using_LLMs_Blog/index.html</loc>
-    <lastmod>2024-04-04T17:22:28.406Z</lastmod>
-  </url>
-  <url>
-    <loc>https://manasnarula.github.io/comm4190_S24_Using_LLMs_Blog/posts/007_seventh/index.html</loc>
-    <lastmod>2024-04-04T17:22:28.458Z</lastmod>
-  </url>
-  <url>
-    <loc>https://manasnarula.github.io/comm4190_S24_Using_LLMs_Blog/posts/002_second_blog/index.html</loc>
-    <lastmod>2024-04-04T17:22:28.410Z</lastmod>
+    <lastmod>2024-04-17T19:31:44.152Z</lastmod>
   </url>
   <url>
     <loc>https://manasnarula.github.io/comm4190_S24_Using_LLMs_Blog/posts/001_first_post/index.html</loc>
-    <lastmod>2024-04-04T17:22:28.406Z</lastmod>
+    <lastmod>2024-04-17T19:31:44.120Z</lastmod>
+  </url>
+  <url>
+    <loc>https://manasnarula.github.io/comm4190_S24_Using_LLMs_Blog/posts/008_eighth/index.html</loc>
+    <lastmod>2024-04-17T19:31:44.160Z</lastmod>
+  </url>
+  <url>
+    <loc>https://manasnarula.github.io/comm4190_S24_Using_LLMs_Blog/about.html</loc>
+    <lastmod>2024-04-17T19:31:44.116Z</lastmod>
+  </url>
+  <url>
+    <loc>https://manasnarula.github.io/comm4190_S24_Using_LLMs_Blog/posts/006_sixth/index.html</loc>
+    <lastmod>2024-04-17T19:31:44.156Z</lastmod>
+  </url>
+  <url>
+    <loc>https://manasnarula.github.io/comm4190_S24_Using_LLMs_Blog/posts/Untitled.html</loc>
+    <lastmod>2024-04-17T19:31:44.164Z</lastmod>
+  </url>
+  <url>
+    <loc>https://manasnarula.github.io/comm4190_S24_Using_LLMs_Blog/posts/004_fourth/index.html</loc>
+    <lastmod>2024-04-17T19:31:44.128Z</lastmod>
+  </url>
+  <url>
+    <loc>https://manasnarula.github.io/comm4190_S24_Using_LLMs_Blog/posts/003_third/indexs.html</loc>
+    <lastmod>2024-04-17T19:31:44.128Z</lastmod>
+  </url>
+  <url>
+    <loc>https://manasnarula.github.io/comm4190_S24_Using_LLMs_Blog/posts/002_second_blog/index.html</loc>
+    <lastmod>2024-04-17T19:31:44.120Z</lastmod>
   </url>
 </urlset>

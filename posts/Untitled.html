@@ -6,11 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Manas">
-<meta name="dcterms.date" content="2024-04-01">
-<meta name="description" content="How will different LLMs play Chess?">
 
-<title>Knowledge Legos - Can GPT Play Chess</title>
+<title>Knowledge Legos</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -26,22 +23,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -71,7 +68,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-fixed fullcontent">
@@ -81,7 +78,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Knowledge Legos</span>
     </a>
   </div>
@@ -92,7 +89,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html"> 
+    <a class="nav-link" href="../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
 </ul>
@@ -103,45 +100,7 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-body">
-      <h1 class="title">Can GPT Play Chess</h1>
-                  <div>
-        <div class="description">
-          How will different LLMs play Chess?
-        </div>
-      </div>
-                          <div class="quarto-categories">
-                <div class="quarto-category">Chess</div>
-                <div class="quarto-category">Board Game</div>
-                <div class="quarto-category">Python</div>
-              </div>
-                  </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta">
-
-      <div>
-      <div class="quarto-title-meta-heading">Author</div>
-      <div class="quarto-title-meta-contents">
-               <p>Manas </p>
-            </div>
-    </div>
-      
-      <div>
-      <div class="quarto-title-meta-heading">Published</div>
-      <div class="quarto-title-meta-contents">
-        <p class="date">April 1, 2024</p>
-      </div>
-    </div>
-    
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     
@@ -152,125 +111,7 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<p>I wanted to find out how different LLMs would react and perform when presented with a game of chess. I did this over a year ago and it started hallucinating quickly, so now I wanted to see if anything has changed. I started with GPT-4.</p>
-<section id="gpt-4" class="level1">
-<h1>GPT-4</h1>
-<p>Me: Let’s play chess</p>
-<p>GPT-4: Absolutely! I’d be delighted to play a game of chess with you. I’ll set up the board. You can choose to play as white or black. Just to clarify, playing as white means you’ll make the first move. Which do you prefer?</p>
-<p>Me: I’ll play white</p>
-<section id="now-it-loaded-a-python-app-to-load-the-game-so-i-was-hopeful-that-it-could-be-a-real-game." class="level2">
-<h2 class="anchored" data-anchor-id="now-it-loaded-a-python-app-to-load-the-game-so-i-was-hopeful-that-it-could-be-a-real-game.">Now, it loaded a python app to load the game, so I was hopeful that it could be a real game.</h2>
-<p>GPT-4: The board is set up in the standard starting position, with each player having eight pawns, two rooks, two knights, two bishops, a queen, and a king. Your pieces as white are on the two bottom rows, and mine as black are on the top two rows.</p>
-<p>The board squares are named from “a” to “h” horizontally (from your left to right) and from “1” to “8” vertically (with “1” being the row closest to you). Your pieces are arranged as follows: Rooks on a1 and h1, Knights on b1 and g1, Bishops on c1 and f1, Queen on d1, and King on e1. Pawns fill the second row from a2 to h2.</p>
-<p>Let me know your first move using the standard chess move notation (e.g., “e4” for moving the pawn in front of the king two squares forward).</p>
-<p>Me: e4</p>
-<p>GPT-4: You moved your pawn to e4. I’ll respond with a classic defense. Pawn to e5. Your move!</p>
-<p>Me: nf3</p>
-<p>GPT-4: You’ve developed your knight to f3, attacking the e5 pawn. I’ll counter by developing my knight as well. Knight to c6, defending the e5 pawn. Your move!</p>
-<p><em>First couple moves have gone OK.</em></p>
-<p>After 6 moves, it made its first mistake.</p>
-<p><img src="chess.png" class="img-fluid"></p>
-<p>GPT-4: Your knight captures on f7, delivering a check to my king and threatening various pieces simultaneously, including my rook on h8. This is a bold and aggressive play! I’ll take the knight with my king. King takes f7. Your turn!</p>
-<p>Me: you cannot take the knight, it’s guarded</p>
-<p>GPT-4: You’re right; my oversight there. The knight on f7 is indeed guarded by your bishop on c4, making it unsafe for my king to capture the knight directly. Let’s adjust my move accordingly.</p>
-<p>Given the situation, I’ll respond differently to address the threat your knight poses. I’ll move my rook to f8 to protect the f7 square more securely. Your move!</p>
-<p>Me: your knight is blocking the rook from moving there</p>
-<p>GPT-4: Indeed, my apologies for the oversight. The knight on c6 does prevent the rook from moving to f8. Let’s correct the scenario once more, considering the actual position on the board.</p>
-<p>Given the current threat and position, a prudent move would be to address the immediate threat your knight poses. I’ll play Queen to e7 to protect the king and add an extra defender to the f7 square.</p>
-<p>Now, it’s your move!</p>
-</section>
-<section id="i-thought-when-gpt-loaded-up-python-it-was-going-to-play-like-a-grandmaster.-but-within-a-few-moves-it-proved-its-obviously-not-there-yet." class="level2">
-<h2 class="anchored" data-anchor-id="i-thought-when-gpt-loaded-up-python-it-was-going-to-play-like-a-grandmaster.-but-within-a-few-moves-it-proved-its-obviously-not-there-yet.">I thought when GPT loaded up Python, it was going to play like a grandmaster. But within a few moves, it proved it’s obviously not there yet.</h2>
-<p>I continued the game, correcting in when it had an oversight here or there. It often tried to move pieces to squares where there were already other pieces, or just illegal moves. Eventually, after me getting significantly ahead, it just could not make a legal move, so I quit. Let’s move on to Mistral.</p>
-</section>
-</section>
-<section id="mistral" class="level1">
-<h1>Mistral</h1>
-<p>Me: Let’s play chess</p>
-<p>Mistral: Sure, I’d be happy to help you play chess! As a text-based assistant, I can’t provide a visual chessboard, but I can certainly help you understand the game, make moves, and provide some strategy tips.</p>
-<p>Here’s how we can play:</p>
-<p>You’ll tell me your move in standard algebraic notation (e.g., e4, Nf3, etc.) I’ll tell you my move in response. We’ll continue like this until the game is over. You’ll be playing as white, so you get to go first. Please enter your move!</p>
-<p>Me: e4</p>
-<p>Mistral: A great choice! The pawn to e4 is a common opening move that allows you to control the center of the board.</p>
-<p>In response, I’ll play e5, matching your pawn move and also staking a claim in the center.</p>
-<p>Your turn again! Please enter your next move in standard algebraic notation.</p>
-<p>Me: Nf3</p>
-<p>Mistral: Another solid move! By developing your knight to f3, you’re attacking my pawn on e5 and preparing to castle kingside.</p>
-<p>In response, I’ll play Nc6, developing my own knight and attacking your pawn on e4.</p>
-<p>Your turn again! Please enter your next move in standard algebraic notation.</p>
-<section id="it-didnt-make-an-illegal-move-here-but-its-reasoning-of-attacking-your-pawn-on-e4-is-incorrect.-despite-this-slip-up-it-moved-on-making-legal-moves-and-even-followed-a-typical-chess-opening." class="level2">
-<h2 class="anchored" data-anchor-id="it-didnt-make-an-illegal-move-here-but-its-reasoning-of-attacking-your-pawn-on-e4-is-incorrect.-despite-this-slip-up-it-moved-on-making-legal-moves-and-even-followed-a-typical-chess-opening.">It didn’t make an illegal move here, but it’s reasoning of “attacking your pawn on e4” is incorrect. Despite this slip up, it moved on making legal moves, and even followed a typical chess opening.</h2>
-<p><em>But, it did make worse moves after a few more moves, and when I was two moves away from a checkmate, it started to hallucinate, both with illegal moves, and when it was explaining what was going on on the board and why it was doing what it was doing.</em></p>
-<p><img src="chess1.png" class="img-fluid"></p>
-</section>
-</section>
-<section id="claude---sonnet" class="level1">
-<h1>Claude - Sonnet</h1>
-<p><em>Claude started by telling me how it didn’t have the capability to play, but when I made my first move, play it did.</em></p>
-<p>Me: Let’s play chess</p>
-<p>Claude: Unfortunately, I don’t have the capability to actually play a full game of chess. As an AI assistant without a physical form, I can’t make moves on a chess board. However, I’d be happy to discuss chess strategy, famous games, openings, tactics, and other chess-related topics if you’re interested! I have a strong understanding of the rules and principles of chess.</p>
-<p>Me: I go e4</p>
-<p>Claude: Sure, let’s start a game! With the move e4, you are playing one of the most classical and popular openings in chess - the King’s Pawn Opening.</p>
-<p>My response would be:</p>
-<p>e5</p>
-<p>This is known as the Open Game or Double King’s Pawn Opening. It leads to an open position in the center with both players fighting for control of the e4 and e5 squares. Some possible continuations could be:</p>
-<ol type="1">
-<li>e4 e5</li>
-<li>Nf3 Nc6</li>
-<li>Bb5 (The Ruy Lopez)</li>
-</ol>
-<p>Or:</p>
-<ol type="1">
-<li>e4 e5<br>
-</li>
-<li>Nf3 Nc6</li>
-<li>Bc4 Bc5 (The Italian Game)</li>
-</ol>
-<p>Or even:</p>
-<ol type="1">
-<li>e4 e5</li>
-<li>Nf3 Nf6 (The Petrov Defense)</li>
-</ol>
-<p>There are many possibilities and rich theory behind this opening. I’d be happy to discuss and analyze further moves if you’d like to continue the game! Let me know your next move.</p>
-<section id="interesting.-its-not-only-trying-to-play-but-teach-at-the-same-time.-and-it-continued-to-do-this-after-every-move.-even-though-all-llms-probably-have-a-lot-of-chess-theory-in-their-databases-out-of-these-three-it-seems-like-claude-is-putting-it-to-the-best-and-most-practical-use-understanding-openings-and-strategy-better-than-the-others.-eventually" class="level2">
-<h2 class="anchored" data-anchor-id="interesting.-its-not-only-trying-to-play-but-teach-at-the-same-time.-and-it-continued-to-do-this-after-every-move.-even-though-all-llms-probably-have-a-lot-of-chess-theory-in-their-databases-out-of-these-three-it-seems-like-claude-is-putting-it-to-the-best-and-most-practical-use-understanding-openings-and-strategy-better-than-the-others.-eventually">Interesting. It’s not only trying to play, but teach at the same time. And it continued to do this after every move. Even though all LLMs probably have a lot of chess theory in their databases, out of these three, it seems like Claude is putting it to the best and most practical use, understanding openings and strategy better than the others. Eventually…</h2>
-<p>Claude: Got it, you’ve played:</p>
-<ol type="1">
-<li>e4 e5</li>
-<li>Nf3 Nc6</li>
-<li>Bc4 Bc5</li>
-<li>c3</li>
-</ol>
-<p>Continuing with one of the main lines of the Italian Game/Giuoco Piano opening.</p>
-<p>As Black, I will develop the knight to its natural square with:</p>
-<p>4…Nf6</p>
-<p>This develops the piece to an excellent square, defends the e5 pawn, and prepares to castle. After 0-0, Black will try to undermine the center with …d6 and …c6 pawn breaks.</p>
-<p>Some main continuations could be:</p>
-<ol start="5" type="1">
-<li>d3 O-O</li>
-<li>O-O d6</li>
-<li>Bg5 c6</li>
-</ol>
-<p>Or White could keep more tension with:</p>
-<ol start="5" type="1">
-<li>d3 O-O<br>
-</li>
-<li>Bg5 d6</li>
-<li>Nd2</li>
-</ol>
-<p><strong>Please make your 5th move as White so we can explore this classical opening further!</strong></p>
-</section>
-<section id="i-found-it-pretty-cool-how-it-recognizes-the-classical-opening-especially-because-its-what-i-used-to-typically-play-when-i-was-younger.-lets-see-how-far-it-gets." class="level2">
-<h2 class="anchored" data-anchor-id="i-found-it-pretty-cool-how-it-recognizes-the-classical-opening-especially-because-its-what-i-used-to-typically-play-when-i-was-younger.-lets-see-how-far-it-gets.">I found it pretty cool how it recognizes the classical opening, especially because it’s what I used to typically play when I was younger. Let’s see how far it gets.</h2>
-<p><em>By the 10-15th move, it started to hallucinate a little bit. But it definitely outperformed GPT-4 and Mistral and followed the opening for a while, and then made some non-book moves that were legal, all while explaining what each move for each side does, and multiple possible continuations after every move. Though it couldn’t make it through a whole game, I am still thoroughly impressed.</em></p>
-<p><img src="chess3.png" class="img-fluid"></p>
-</section>
-</section>
-<section id="claude-wins" class="level1">
-<h1>CLAUDE WINS</h1>
 
-
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
