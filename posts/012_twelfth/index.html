@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.554">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Manas">
+<meta name="dcterms.date" content="2024-04-30">
+<meta name="description" content="I’m going to generate a couple fictional crimes and see how different LLMs go about solving it">
+
+<title>Knowledge Legos - LLMs Solving Fictional Crimes</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Knowledge Legos</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">LLMs Solving Fictional Crimes</h1>
+                  <div>
+        <div class="description">
+          I’m going to generate a couple fictional crimes and see how different LLMs go about solving it
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">Crime-Solving</div>
+                <div class="quarto-category">Detective Abilities</div>
+                <div class="quarto-category">Critical Thinking/Riddle Solving</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Manas </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">April 30, 2024</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<p>First, I’m going to use GPT to generate two fictional crimes. Then, I will head to Lmsys to compare Reka Core and Qwen Max’s approaches to solving these crimes.</p>
+<p><strong>Me to GPT:</strong> I am going to test two of my friends’ abilities to solve fictional crimes. I want to compare and contrast their ways of thinking. I want you to develop an extremely intricate fictional crime that takes multiple steps to work through and where two people could easily think differently.</p>
+<section id="the-first-fictional-crime" class="level2">
+<h2 class="anchored" data-anchor-id="the-first-fictional-crime">THE FIRST FICTIONAL CRIME</h2>
+<p>A high-profile jewelry heist took place at the exclusive Rosette Mansion. A rare emerald necklace worth millions, known as “The Jade Serpent,” was stolen from a secure display case during a charity gala. The gala featured celebrities, politicians, and business tycoons, all mingling in an atmosphere of wealth and elegance.</p>
+<p><strong>Key Details:</strong></p>
+<p>Setting: The mansion is in a secluded area and is fully secured with surveillance cameras, alarms, and guards.</p>
+<p>The Timeline:</p>
+<p>7:30 PM: Guests start arriving. The necklace is in its display case.</p>
+<p>8:15 PM: The mansion’s security reports a temporary power glitch, leaving a blind spot in camera coverage for 3 minutes.</p>
+<p>8:20 PM: The host announces that the charity auction will start in 10 minutes.</p>
+<p>8:30 PM: The host officially begins the auction. The necklace is still present.</p>
+<p>9:00 PM: The mansion staff notice the necklace is missing and raise the alarm.</p>
+<p>9:15 PM: Security footage shows that guests are still within the mansion. No one was seen leaving suspiciously during this period.</p>
+<p><strong>Suspects and Evidence:</strong></p>
+<p>The Celebrity Chef: Famous for his fusion cuisine, he was hired to cater the gala. He had access to various areas and brought a few assistants.</p>
+<p><em>Alibi:</em> Claims to have been supervising his team during the glitch, preparing the main course.</p>
+<p><em>Evidence:</em> An assistant chef saw the chef go to a private storage room during the power glitch, but no one checked on him.</p>
+<p>The Politician’s Spouse: Attended with her influential partner but seemed more interested in networking.</p>
+<p><em>Alibi:</em> Was mingling with guests in the lobby.</p>
+<p><em>Evidence:</em> Security footage shows her near the display case around 8:30 PM.</p>
+<p>The Art Dealer: A known collector with a passion for rare gems, they have a history of dubious dealings.</p>
+<p><em>Alibi:</em> Was watching the charity auction from a private balcony.</p>
+<p><em>Evidence:</em> His assistant claims the dealer left briefly around 8:20 PM to make a call.</p>
+<p>The Host’s Business Partner: They were tasked with managing the charity auction and ensuring security.</p>
+<p><em>Alibi:</em> Coordinating with the auctioneer, managing bids, and handling logistics.</p>
+<p><em>Evidence:</em> Some guests reported seeing them appear agitated during the power glitch.</p>
+<p><strong>The Challenges:</strong></p>
+<p>The Missing Window: The brief blackout offers a small window for someone to open the display and take the necklace.</p>
+<p>Conflicting Accounts: Witness testimonies differ, creating confusion about suspect movements.</p>
+<p>The Red Herrings: Various pieces of evidence can easily lead to false conclusions, such as a similar-looking but worthless necklace being planted in the storage room.</p>
+<p><strong>Comparing Perspectives:</strong></p>
+<p>Friend 1: Could focus on the politician’s spouse, noting her position near the display case, or suspect the chef based on his access.</p>
+<p>Friend 2: Might pursue the art dealer, given his history, or scrutinize the business partner for potential insider assistance.</p>
+<p><em>I told GPT to give more information and ensure that there was an answer, so that, at the end, we can assess the two LLMs against each other. I fed all this information to the LLMs, and then asked them to write a one page report about what happened, and how they got to their conclusion.</em></p>
+</section>
+<section id="reka" class="level2">
+<h2 class="anchored" data-anchor-id="reka">Reka</h2>
+<p><strong>Report: Solving the Rosette Mansion Jewelry Heist</strong></p>
+<p><strong>Objective:</strong> To analyze all available evidence, interview suspects, and determine the prime suspect responsible for the high-profile jewelry heist at the Rosette Mansion, in which the rare emerald necklace “The Jade Serpent” was stolen during a charity gala.</p>
+<p><strong>Methods:</strong></p>
+<ol type="1">
+<li>Examined the crime scene and timeline.</li>
+<li>Reviewed suspect profiles and alibis.</li>
+<li>Investigated additional evidence.</li>
+<li>Analyzed additional clues.</li>
+<li>Reviewed suspects and clues to form a hypothesis.</li>
+</ol>
+<p><strong>Conclusion:</strong></p>
+<p>Based on the evidence and analysis, the prime suspect is the Art Dealer. Here’s the step-by-step reasoning:</p>
+<ol type="1">
+<li>The power glitch during the gala created a crucial blind spot in camera coverage, coinciding with the necklace’s disappearance.</li>
+<li>The Art Dealer has a strong motive, given his passion for rare gems and history of alleged art smuggling.</li>
+<li>His unexplained absence from the auction coincides with the power outage.</li>
+<li>His assistant testified that the dealer “always checks the time” before making a significant acquisition, suggesting he may have orchestrated the power glitch to steal the necklace.</li>
+<li>The Chef’s proximity to the storage room and his fingerprints on the wine bottle place him as the most likely suspect for disabling the security system.</li>
+<li>The Business Partner’s sighting near the security room and unaccounted-for keys suggest involvement in the security system tampering, possibly assisting the Art Dealer.</li>
+</ol>
+<p>Considering these findings, the <strong>Art Dealer</strong> is the most likely suspect for stealing “The Jade Serpent.” Further investigation, including analyzing the Art Dealer’s phone records and comparing the fake necklace and the stolen necklace, should confirm this hypothesis and bring the perpetrator to justice.</p>
+</section>
+<section id="qwen" class="level2">
+<h2 class="anchored" data-anchor-id="qwen">Qwen</h2>
+<p><strong>Case Report: The Jade Serpent Heist at Rosette Mansion</strong></p>
+<p><strong>Summary</strong> The theft of the multimillion-dollar “Jade Serpent” necklace during a charity gala at the Rosette Mansion necessitated a meticulous investigation into the high-profile attendees. Through careful analysis of the crime scene, alibis, and evidence, it has been determined that the Host’s Business Partner is the primary suspect in the heist.</p>
+<p><strong>Investigation Steps and Findings</strong></p>
+<ol type="1">
+<li><p><strong>Scene Examination and Initial Analysis</strong>: The crime scene was secured, and initial examination revealed a power glitch that coincided with the theft, creating a crucial blind spot in the surveillance. The necklace’s disappearance occurred within this timeframe.</p></li>
+<li><p><strong>Suspect Profiling and Alibi Verification</strong>: Four primary suspects emerged: the Celebrity Chef, the Politician’s Spouse, the Art Dealer, and the Host’s Business Partner. Each had potential motives and opportunities but also presented alibis.</p></li>
+<li><p><strong>Physical and Video Evidence Review</strong>: Close scrutiny of video footage and physical clues led to the discovery of the chef’s fingerprints on a wine bottle near the storage room connecting to the display room, the politician’s spouse’s suspicious behavior near the display, the art dealer’s burner phone, and the business partner’s possession of unaccounted keys and proximity to the security room during the power glitch.</p></li>
+<li><p><strong>Financial and Background Checks</strong>: The business partner’s recent financial troubles stood out as a compelling motive, while background investigations into the other suspects did not reveal equally pressing motives or direct connections to the theft.</p></li>
+<li><p><strong>Reevaluation with Additional Information</strong>: The discovery of the fake necklace in the storage room and the security logs indicating an attempted alarm disablement requiring a master key significantly implicated the Host’s Business Partner. His presence near the security room and possession of keys that were not part of the regular staff’s inventory pointed to inside involvement.</p></li>
+<li><p><strong>Motive, Means, and Opportunity Alignment</strong>: The Business Partner had the strongest alignment of motive (financial distress), means (access to critical areas via the keys), and opportunity (being near the security system during the power outage).</p></li>
+</ol>
+<p><strong>Conclusion</strong></p>
+<p>Based on the comprehensive investigation, it is concluded that the <strong>Host’s Business Partner</strong> is the prime suspect in the theft of “The Jade Serpent.” The combination of his financial difficulties, access to the security system, and suspicious activities during the critical timeframe strongly suggests his involvement. It is recommended to involve law enforcement to execute a search warrant on the Business Partner’s properties, seize any relevant financial records, and further investigate his actions during and after the gala. Additionally, inquiries should be made into potential accomplices or methods of disposal for the stolen necklace. This thorough approach ensures a just resolution and the recovery of the priceless artifact.</p>
+</section>
+<section id="review" class="level2">
+<h2 class="anchored" data-anchor-id="review">Review</h2>
+<p>Reka thinks the Art Dealer did it and Qwen thinks the Business Partner did it. In Reka’s report, they state that it was likely that the Chef and Business Partner helped out in the finessing of the Jade Serpant, and its analysis definitely seems more wishy-washy. I feel like Qwen does a much better job at narrowing it down and it creates, almost, an “Expected Value” or probability approach to get to the answer. Typical AI.</p>
+<p>Since I told GPT to create an answer, which ended up being the <em>Business Partner</em>, by using the fake necklace to replace the real one. He used his master key to tamper with the security system, causing the power glitch to facilitate the switch. However, his nervous behavior and the unaccounted-for keys offer clear signs of guilt. But the assistant chef’s testimony about the celebrity chef leaving for the storage room and the art dealer’s use of a burner phone could implicate them due to their plausible motives and access.</p>
+<p>So based on this, it seems like Qwen got to the correct suspect, but was more narrow-minded that others could have been involved. Reka didn’t get to the right suspect but did correctly assume that the suspect very likely used assistance. Let’s see GPT’s judgment:</p>
+<p>Report 1 Analysis:</p>
+<p>The first report on the Rosette Mansion heist identifies the Art Dealer as the prime suspect by laying out a logical argument based on the known timeline, motives, and circumstantial evidence. It notes that the power glitch coincided with the necklace’s disappearance and uses the art dealer’s absence during that timeframe as crucial evidence. The dealer’s penchant for rare gems and his prior involvement in smuggling allegations bolster the report’s conclusion that he orchestrated the theft. His assistant’s testimony about “always checking the time” suggests meticulous planning, and the burner phone points to secretive behavior.</p>
+<p>However, the report leaves several gaps in its reasoning. It does not establish a direct connection between the art dealer and the tampering of the security system, relying instead on speculative assumptions regarding possible collusion with the business partner. The fingerprints of the Chef on the wine bottle are mentioned but not deeply investigated, potentially obscuring crucial clues. Moreover, the business partner’s involvement near the security system, along with unaccounted-for keys, could have been explored further, especially given his financial troubles. This oversight leaves open the possibility that other suspects may have played a more prominent role than the report concludes. Despite these gaps, the analysis is generally well-structured and plausible, providing a solid interpretation of the available evidence.</p>
+<p>Score: <strong>42.75/50</strong></p>
+<p>Report 2 Analysis:</p>
+<p>The second report offers a more comprehensive analysis, focusing on the Host’s Business Partner as the mastermind of the heist. It recognizes the power glitch as a critical window and scrutinizes the business partner’s proximity to the security room during this period. His possession of unaccounted-for keys and suspicious behavior near the alarm system imply direct involvement in tampering with the security system. Furthermore, the partner’s financial troubles provide a compelling motive, suggesting desperation to cover recent investment losses. This is corroborated by background checks, adding weight to the hypothesis.</p>
+<p>In addition to profiling the suspects, the report thoroughly examines physical and video evidence, revealing the chef’s proximity to the storage room and the fingerprints on the wine bottle, the art dealer’s use of a burner phone, and the politician’s spouse’s suspicious glances near the display. While each suspect had potential motives and opportunities, the business partner’s alignment of motive, means, and opportunity stands out clearly. The attempted alarm disablement requiring a master key implicates the business partner directly. The analysis is well-reasoned and cohesive, but further exploration into accomplices could strengthen the conclusion. The Chef and Art Dealer both had access and motive, suggesting that additional parties may have been involved. Despite this, the logical chain of evidence remains solid.</p>
+<p>Score: <strong>47.25/50</strong></p>
+<p><em>Seems like GPT’s judgment was pretty closely aligned with mine, but it clearly put a more heavy emphasis on correctly identifying the suspect than that there were supporting actors in this, which does make sense.</em></p>
+</section>
+<section id="the-second-fictional-crime" class="level2">
+<h2 class="anchored" data-anchor-id="the-second-fictional-crime">THE SECOND FICTIONAL CRIME</h2>
+<p>The Case of the Fractured Fortune</p>
+<p>At the annual board meeting of the prestigious Starkweather Corporation, a sudden explosion caused structural damage to the executive conference room. Although no one was injured, the blast resulted in the loss of vital corporate documents, halted the company’s ambitious merger plans, and caused the company’s stock to plunge by 30%. Investigators determined that the explosion was caused by tampering with the heating system, leading to a gas leak that ignited when the system was switched on.</p>
+<p><strong>Key Details:</strong></p>
+<p>Setting: The Starkweather Corporation’s headquarters is a state-of-the-art skyscraper equipped with robust security features like surveillance cameras and badge-controlled access.</p>
+<p>Timeline:</p>
+<p>6:00 PM: The last board members leave after the meeting concludes. The room is locked, and the cleaning staff begins their work.</p>
+<p>7:30 PM: The building’s heating system activates due to a drop in temperature.</p>
+<p>7:45 PM: The explosion occurs, damaging the executive conference room and several adjacent offices.</p>
+<p>8:00 PM: Emergency services arrive, and the building is evacuated.</p>
+<p><strong>Suspects and Evidence:</strong></p>
+<p>The CFO: Responsible for overseeing the company’s finances, he stands to gain from the merger but was known to be critical of it.</p>
+<p>Alibi: Claims to have left at 6:15 PM after the meeting.</p>
+<p>Evidence: His keycard accessed the executive conference room at 6:30 PM, shortly before he left the building.</p>
+<p>The CTO: Responsible for managing the corporation’s infrastructure and skeptical of the merger’s tech implications, he could gain influence by preventing it.</p>
+<p>Alibi: Attended an IT team meeting until 7 PM.</p>
+<p>Evidence: Security footage shows him in the basement around 6:45 PM, near the building’s heating system.</p>
+<p>The Union Representative: Has consistently opposed the merger, arguing that it would lead to widespread layoffs.</p>
+<p>Alibi: Left the building by 5 PM to attend a labor meeting.</p>
+<p>Evidence: Witnesses reported seeing him talking to maintenance staff before the meeting and holding blueprints of the building.</p>
+<p>The VP of Operations: Stands to lose the most if the merger goes through due to a restructuring plan that could eliminate her role.</p>
+<p>Alibi: Was on a video conference call until 6:30 PM.</p>
+<p>Evidence: Her personal items were found in the boardroom, suggesting she was present after the meeting ended.</p>
+<p><strong>Challenges:</strong></p>
+<p>Conflicting Timelines: Some witnesses reported seeing the Union Representative after his supposed departure, while others reported seeing the CFO much later than his stated departure time.</p>
+<p>Access Logs: Multiple keycards accessed the building’s basement and heating system area between 6 PM and 7 PM.</p>
+<p><strong>Solution:</strong> The CTO sabotaged the heating system to prevent the merger, which he felt would compromise the company’s technological integrity and influence his role. He used his access to the basement to tamper with the system and trigger the explosion. The CFO’s keycard access and the VP’s personal items were planted to frame them, while the Union Representative was an easy scapegoat due to his opposition to the merger. The CTO’s appearance in the basement, combined with his skepticism about the merger, ultimately revealed his involvement.</p>
+<p><em>This time, I pitted Command R+ and Zephyr against each other.</em></p>
+</section>
+<section id="command-r" class="level2">
+<h2 class="anchored" data-anchor-id="command-r">Command R+</h2>
+<p><strong>Case Report: Unraveling the Starkweather Corporation Explosion</strong></p>
+<p><strong>Executive Summary:</strong></p>
+<p>On the evening of [date], an explosion rocked the executive conference room of the Starkweather Corporation, a prestigious company headquartered in a bustling business district. While the incident caused structural damage and disrupted ambitious merger plans, my investigation revealed a deliberate act of sabotage. This report outlines the key steps and evidence leading to the identification of the prime suspect.</p>
+<p><strong>Prime Suspect: The CTO</strong></p>
+<p>Through meticulous analysis, the Chief Technology Officer (CTO) emerges as the prime suspect in this intricate case. The motive centers on the CTO’s staunch resistance to the potential merger due to anticipated technological challenges and concerns. With a strong desire to protect the company’s technological autonomy, the CTO had the most apparent motive among the suspects.</p>
+<p><strong>Steps to Uncovering the Truth:</strong></p>
+<ol type="1">
+<li><strong>Initial Assessment:</strong>
+<ul>
+<li>Four primary suspects emerged: the CFO, CTO, Union Representative, and VP of Operations, each with varying motives and opportunities.</li>
+</ul></li>
+<li><strong>Motive and Opportunity Inspection:</strong>
+<ul>
+<li>CFO: While initially supportive, recent criticisms and his presence during the key timeframe were suspicious.</li>
+<li>CTO: Known resistance to the merger, presence near the heating system, and concerns in emails pointed towards a strong motive and opportunity.</li>
+<li>Union Representative: Vocal opposition to protect jobs, but conversations with staff and blueprints could be standard procedure.</li>
+<li>VP of Operations: Standing to lose the most, her left-behind personal items suggested a potential alibi setup.</li>
+</ul></li>
+<li><strong>Timeline Reconstruction:</strong>
+<ul>
+<li>6:00–6:30 PM: CFO, VP, and janitorial staff present. Heating system adjusted, providing a potential tampering opportunity.</li>
+<li>6:30–7:00 PM: CTO spotted near the heating system, coinciding with CFO’s claimed departure.</li>
+<li>7:30 PM: Heating system activation.</li>
+<li>7:45 PM: Explosion, indicating tampering during the prior hour.</li>
+</ul></li>
+<li><strong>Evidence Analysis:</strong>
+<ul>
+<li>Security Footage: CFO’s departure supported his alibi. CTO’s presence near the heating system was pivotal.</li>
+<li>Keycard Access: CFO’s access to the conference room was noteworthy.</li>
+<li>Emails: CTO’s concerns aligned with resistance motives.</li>
+<li>Maintenance Reports: Union Rep’s actions required further context.</li>
+</ul></li>
+<li><strong>Establishing Probable Cause:</strong>
+<ul>
+<li>CFO: Changing merger stance, access, and departure time as probable cause.</li>
+<li>CTO: Resistance, opportunity, and expressed concerns established strong probable cause.</li>
+<li>Union Rep: Motive was clear, but further evidence was needed for probable cause.</li>
+<li>VP: Strong personal motive and potential alibi manipulation established cause.</li>
+</ul></li>
+<li><strong>Interview and Interrogation Insights:</strong>
+<ul>
+<li>CFO Interviews: His shifting views and precise activities during the critical timeframe were probed.</li>
+<li>CTO Interviews: Confronted with security footage evidence and questioned about interactions with other suspects.</li>
+<li>Union Rep Interviews: Inquired about conversations with janitorial staff and the purpose of the blueprints.</li>
+<li>VP Interviews: Explained the presence of her personal items and potential motives for framing others.</li>
+</ul></li>
+</ol>
+<p><strong>Conclusion:</strong></p>
+<p>After a comprehensive investigation and careful consideration of the evidence, the CTO remains the prime suspect in the Starkweather Corporation explosion. His resistance to the merger, presence near the heating system, and expressed concerns provide a compelling case.</p>
+<p>While the CFO, Union Representative, and VP of Operations cannot be entirely ruled out, the weight of evidence and motives suggests that the CTO had the strongest incentive and opportunity to commit the act of sabotage.</p>
+<p>Further investigative steps may include a detailed forensic analysis of the heating system, additional witness interviews, and a deeper dive into the CTO’s digital footprint to solidify the case and bring the perpetrator to justice.</p>
+</section>
+<section id="zephyr" class="level2">
+<h2 class="anchored" data-anchor-id="zephyr">Zephyr</h2>
+<p>Title: The Case of the Fractured Fortune - Investigation Summary</p>
+<p><strong>Overview:</strong></p>
+<p>An explosion in the executive conference room of the Starkweather Corporation caused structural damage to the room and adjacent offices, resulting in the loss of vital corporate documents and a 30% plunge in the company’s stock price. The explosion was triggered by tampering with the heating system, which led to a gas leak that ignited when the system was turned on.</p>
+<p><strong>Suspects and Evidence:</strong></p>
+<ol type="1">
+<li>The CFO: Profiled as a supporter of the merger, but historically had concerns. Keycard accessed the conference room at 6:30 PM, and surveillance footage captured him leaving the building at 6:45 PM.</li>
+<li>The CTO: Responsible for the company’s tech infrastructure, he opposed the merger due to potential tech integration challenges. Security footage showed him in the basement around 6:45 PM, near the heating system.</li>
+<li>The Union Representative: Vocally opposed to the merger over job security concerns. Maintenance staff reported seeing him conversing with janitors and holding blueprints of the building.</li>
+<li>The VP of Operations: Responsible for overseeing company operations, she stands to lose her job due to a restructuring plan. Her personal items were found in the conference room after the meeting ended.</li>
+</ol>
+<p><strong>Analysis of Suspects:</strong></p>
+<ol type="1">
+<li>The CFO: His keycard accessed the conference room at 6:30 PM, and he left the building at 6:45 PM, suggesting he may have entered the room and left quickly, possibly to set up the explosion.</li>
+<li>The CTO: He was seen in the basement near the heating system at 6:45 PM, indicating he had the opportunity to tamper with the heating system.</li>
+<li>The Union Representative: He was seen with blueprints of the building, implying knowledge of the building’s layout, but he claimed to have left the building at 5 PM, which contradicts the timeline of the explosion.</li>
+<li>The VP of Operations: Her personal items were found in the conference room after the meeting ended, suggesting she was present afterward. However, there’s no direct evidence linking her to the explosion.</li>
+</ol>
+<p><strong>Conclusion:</strong></p>
+<p>Based on the analysis and evidence, the prime suspect is the CTO. His presence in the basement near the heating system at 6:45 PM provides a strong opportunity to tamper with the heating system. Additionally, his opposition to the merger due to potential tech integration challenges provides a clear motive.</p>
+<p>Next Steps: To confirm the hypothesis, the following investigative steps should be taken:</p>
+<ol type="1">
+<li>Analyze the CTO’s email and communication records to determine if he communicated with anyone about the merger or the heating system.</li>
+<li>Interview the janitorial staff and maintenance workers to see if they noticed anything suspicious or if they saw the CTO in the basement or the conference room around the time of the explosion.</li>
+<li>Review the security footage to see if there’s any additional footage of the CTO in the basement or the conference room.</li>
+</ol>
+<p>By conducting these additional investigations, we should be able to gather more evidence and confirm the CTO as the culprit.</p>
+</section>
+<section id="review-1" class="level2">
+<h2 class="anchored" data-anchor-id="review-1">Review</h2>
+<p><em>They both got to the correct suspect, but let’s see how GPT judges their approaches.</em></p>
+<p>Analysis of the First Report:</p>
+<p><strong>Correctness and Validity:</strong></p>
+<ol type="1">
+<li>Prime Suspect Identification: The report identifies the CTO as the primary suspect based on a strong motive rooted in his resistance to the merger and his concerns over technological changes. His presence near the heating system and the concerns expressed in his emails are convincing evidence that aligns well with the stated motive.</li>
+<li>Comprehensive Analysis of Evidence: The report details the timeline of suspect movements, especially focusing on the crucial period when the heating system was tampered with. The reconstruction of the timeline provides a logical framework that shows the CTO had both the opportunity and means to cause the explosion.</li>
+<li>Thorough Assessment of Other Suspects: The analysis accounts for the CFO’s shifting stance on the merger, the Union Representative’s vocal opposition, and the VP’s potential alibi manipulation. Each suspect is considered, strengthening the focus on the CTO as the most likely culprit due to the corroborating evidence.</li>
+</ol>
+<p><strong>Logical Gaps or Weaknesses:</strong></p>
+<ol type="1">
+<li>Insufficient Elimination of Other Suspects: While the CFO, Union Representative, and VP are discussed in terms of their motives and opportunities, their involvement isn’t definitively ruled out. The CFO’s keycard usage and the VP’s personal items suggest some level of involvement that is not fully clarified.</li>
+<li>Over-Reliance on Circumstantial Evidence: The evidence linking the CTO to the crime is circumstantial, relying primarily on his presence and opposition to the merger. A deeper exploration of physical or digital evidence tying him directly to the tampering could have strengthened the case.</li>
+</ol>
+<p><strong>Conclusion Validity:</strong></p>
+<p>The conclusion that the CTO orchestrated the sabotage is well-reasoned based on the combination of motive, opportunity, and circumstantial evidence. However, a more definitive link through forensic analysis would have bolstered the conclusion. The overall structure and thorough analysis make this a compelling report.</p>
+<p><strong>Score: 45.50/50</strong></p>
+<p>Analysis of the Second Report:</p>
+<p><strong>Correctness and Validity:</strong></p>
+<ol type="1">
+<li>Prime Suspect Identification: The report accurately identifies the CTO as the prime suspect due to his presence in the basement around the time of the explosion. His opposition to the merger, which posed tech integration challenges, provided a clear motive for sabotage.</li>
+<li>Timeline and Evidence Analysis: The timeline aligns the CTO’s presence in the basement near the heating system at a crucial moment with the tampering of the system. The analysis of other suspects effectively considers each one’s motives and opportunities, such as the CFO’s conference room access and the Union Representative’s knowledge of the building layout.</li>
+<li>Logical Structure: The report presents a logical progression from suspect profiling to evidence analysis and builds a compelling argument against the CTO. It also considers each suspect’s alibis and potential connections to the explosion.</li>
+</ol>
+<p><strong>Logical Gaps or Weaknesses:</strong></p>
+<ol type="1">
+<li>Circumstantial Evidence: While the CTO is the most plausible suspect, the evidence remains circumstantial, relying heavily on his opposition to the merger and presence in the basement. Direct forensic or digital evidence tying him to the tampering is still required.</li>
+<li>Inconclusive Elimination of Other Suspects: The analysis doesn’t fully rule out the other suspects, particularly the CFO, whose quick entry and exit from the conference room could indicate involvement. The Union Representative’s possession of blueprints is suspicious, but not explored in-depth.</li>
+</ol>
+<p><strong>Conclusion Validity:</strong></p>
+<p>The conclusion that the CTO is the prime suspect is reasonable based on his presence near the heating system and clear opposition to the merger. The steps outlined for further investigation are practical and would likely strengthen the case. Despite some reliance on circumstantial evidence, the report is cohesive and clearly points to a plausible theory.</p>
+<p><strong>Score: 46.00/50</strong></p>
+<p><em>This seems like it was a pretty fair matchup. Their strengths pretty much mirrored each other, as did the logical gaps/weaknesses. But GPT decided that Zephyr’s process was just a little bit better.</em></p>
+<p><img src="detective.png" class="img-fluid"></p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/manasnarula\.github\.io\/comm4190_S24_Using_LLMs_Blog\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
